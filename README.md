@@ -1,5 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+
+## Deployment
+
+Currently deployed at: (https://fudge-seng2021.herokuapp.com/)
+* Main branch auto deploys
+
 ## Getting Started
 
 First, run the development server:
@@ -22,5 +28,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!\
-
-Currently deployed at : (https://seng2021-fudge.vercel.app/)
