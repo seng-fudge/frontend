@@ -7,7 +7,7 @@ body {
 }
 
 main {
-  padding: 3rem 10vw;
+  padding: 4rem 10vw;
 }
 
 :root {
@@ -87,7 +87,18 @@ a {
   margin: 0.5rem 1rem 0.5rem 0;
 }
 
+button:disabled,
+button[disabled]{
+  filter: brightness(80%);
+  cursor: not-allowed;
+}
+
 button.btn-red {
   background-color: var(--color-red);
+  color: white;
+}
+
+button.btn-green {
+  background-color: var(--color-green);
   color: white;
 }

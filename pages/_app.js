@@ -4,13 +4,24 @@ import { UserContext } from "../lib/context";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-
-  const [createToken, setCreateToken] = useState(null)
-  const [sendToken, setSendToken] = useState(null)
-
+  const [createToken, setCreateToken] = useState(null);
+  const [sendToken, setSendToken] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
   return (
-    <UserContext.Provider value={{createToken, sendToken}}>
+    <UserContext.Provider
+      value={{
+        createToken,
+        setCreateToken,
+        sendToken,
+        setSendToken,
+        email,
+        setEmail,
+        password,
+        setPassword,
+      }}
+    >
       <NavBar />
       <Component {...pageProps} />
     </UserContext.Provider>
