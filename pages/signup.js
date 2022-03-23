@@ -15,9 +15,9 @@ function SignUpForm() {
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
 
-  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(true);
 
-  const [isValidPassword, setIsValidPassword] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(true);
 
   const onChangeEmail = (e) => {
     const val = e.target.value;
@@ -36,7 +36,31 @@ function SignUpForm() {
   };
 
   const onSubmit = async (e) => {
+
+    console.log("Button pressed")
+
     //TODO Add api login call
+    fetch(
+      "https://authentication-seng2021.herokuapp.com/createUser",
+      {
+        method: "POST",
+        body: {
+          email:  formEmail,
+          password: formPassword,
+        },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    ).then(function(response) {
+      console.log(response.status);
+      if (!response.ok) {
+        throw new Error("HTTP status " + response.status);
+      }
+    });
+
+
+    
   };
 
   return (
@@ -60,7 +84,14 @@ function SignUpForm() {
             value={formPassword}
             onChange={onChangePassword}
           />
-          {!isValidPassword ? <h4 className="red-text">Invalid password: Must be at least 8 char long with 1 lower case, upper case and num</h4> : <></>}
+          {!isValidPassword ? (
+            <h4 className="red-text">
+              Invalid password: Must be at least 8 char long with 1 lower case,
+              upper case and num
+            </h4>
+          ) : (
+            <></>
+          )}
         </div>
 
         <button
@@ -78,6 +109,9 @@ function SignUpForm() {
 }
 
 function ValidateEmail(email) {
+  if (email == "") {
+    return true;
+  }
   var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if (email.match(mailformat)) {
     return true;
@@ -86,6 +120,10 @@ function ValidateEmail(email) {
 }
 
 function ValidatePassword(password) {
+  if (password == "") {
+    return true;
+  }
+
   var lowerCaseLetters = /[a-z]/g;
   var upperCaseLetters = /[A-Z]/g;
   var numbers = /[0-9]/g;
