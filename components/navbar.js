@@ -9,13 +9,13 @@ export default function NavBar() {
     <nav className="navbar">
       <ul>
         <li>
-          <Link href="/">
+          <Link href="/" passHref>
             <button className="btn-red">Home</button>
           </Link>
         </li>
-        {email ? (<li><Link href="/login">
+        {email ? (<li><Link href="/login" passHref>
           <button className="btn-red">Logout</button>
-        </Link></li>) : (<li><Link href="/login">
+        </Link></li>) : (<li><Link href="/login" passHref>
           <button className="btn-green">Login</button>
         </Link></li>)}
       </ul>

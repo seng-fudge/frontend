@@ -1,9 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useContext } from "react/cjs/react.development";
+import { useContext } from "react";
 import { useState } from "react";
 import { UserContext } from "../lib/context";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import LogoutButton from "../components/logoutButton";
 
@@ -58,7 +57,7 @@ function SigninForm() {
         </button>
       </form>
       <h2>Create account</h2>
-      <Link href="/signup">
+      <Link href="/signup" passHref>
         <button className="btn-green">Sign up</button>
       </Link>
     </section>

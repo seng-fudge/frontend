@@ -1,5 +1,5 @@
 import { Toaster } from "react-hot-toast";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import NavBar from "../components/navbar";
 import { UserContext } from "../lib/context";
 import "../styles/globals.css";
