@@ -4,7 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
 
-export default function Home() {
+export default function Signup() {
   const { email } = useContext(UserContext);
 
   return <main>{email ? <LogoutButton /> : <SignUpForm />}</main>;
@@ -73,13 +73,8 @@ function SignUpForm() {
     // fetchThing();
   };
 
-  const notify = () => toast.success('Post created!');
-
   return (
     <section>
-      <button onClick={() => notify()}>
-        Toast
-      </button>
       <h2>Sign up</h2>
       <form onSubmit={() => onSubmit()}>
         <div>

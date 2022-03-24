@@ -7,7 +7,7 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import LogoutButton from "../components/logoutButton";
 
-export default function Home() {
+export default function Login() {
   const { email } = useContext(UserContext);
 
   return <main>{email ? <LogoutButton/> : <SigninForm />}</main>;
