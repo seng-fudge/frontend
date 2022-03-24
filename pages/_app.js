@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import { useState } from "react/cjs/react.development";
 import NavBar from "../components/navbar";
 import { UserContext } from "../lib/context";
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }) {
     >
       <NavBar />
       <Component {...pageProps} />
+      <Toaster/>
     </UserContext.Provider>
   );
 }

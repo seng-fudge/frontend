@@ -2,8 +2,7 @@ import LogoutButton from "../components/logoutButton";
 import { UserContext } from "../lib/context";
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
-import debounce from "lodash.debounce";
-import { useCallback } from "react/cjs/react.production.min";
+import { toast } from "react-hot-toast";
 
 export default function Home() {
   const { email } = useContext(UserContext);
@@ -12,6 +11,8 @@ export default function Home() {
 }
 
 function SignUpForm() {
+  const { email, setEmail, password, setPassword } = useContext(UserContext);
+
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
 
@@ -36,37 +37,51 @@ function SignUpForm() {
   };
 
   const onSubmit = async (e) => {
+    event.preventDefault();
 
-    console.log("Button pressed")
+    console.log("Button pressed");
 
-    //TODO Add api login call
-    fetch(
-      "https://authentication-seng2021.herokuapp.com/createUser",
-      {
-        method: "POST",
-        body: {
-          email:  formEmail,
-          password: formPassword,
-        },
-        headers: {
-          "Content-Type": "application/json",
-        },
+    try {
+      const response = await fetch(
+        "https://authentication-seng2021.herokuapp.com/createUser",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // your expected POST request payload goes here
+            email: formEmail,
+            password: formPassword,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+
+        setEmail(formEmail);
+        setPassword(formPassword);
+      } else {
+        toast.error("Email is already registered")
       }
-    ).then(function(response) {
-      console.log(response.status);
-      if (!response.ok) {
-        throw new Error("HTTP status " + response.status);
-      }
-    });
+    } catch (error) {
+      // enter your logic for when there is an error (ex. error toast)
 
-
-    
+      console.log(error);
+    }
+    // fetchThing();
   };
+
+  const notify = () => toast.success('Post created!');
 
   return (
     <section>
+      <button onClick={() => notify()}>
+        Toast
+      </button>
       <h2>Sign up</h2>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={() => onSubmit()}>
         <div>
           <input
             name="email"
@@ -145,4 +160,8 @@ function ValidatePassword(password) {
   }
 
   return true;
+}
+
+function fetchThing() {
+  fetch("https://google.com");
 }

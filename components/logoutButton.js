@@ -1,16 +1,17 @@
+import { useContext } from "react";
+import { UserContext } from "../lib/context";
+
 export default function LogoutButton() {
-  const { email } = useContext(UserContext);
+  const { email, setEmail, setPassword } = useContext(UserContext);
+
+  const resetLogin = (e) => {
+    setEmail(null);
+    setPassword(null);
+  }
 
   return (
-    <button className="btn-red" onClick={logout}>
+    <button className="btn-red" onClick={() => resetLogin()}>
       Logout of {email}
     </button>
   );
-}
-
-function logout() {
-  const { setEmail, setPassword } = useContext(UserContext);
-
-  setEmail(null);
-  setPassword(null);
 }
