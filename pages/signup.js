@@ -63,7 +63,9 @@ function SignUpForm() {
         setEmail(formEmail);
         setPassword(formPassword);
       } else {
-        toast.error("Email is already registered")
+        const data = await response.json();
+
+        toast.error(data['message'])
       }
     } catch (error) {
       // enter your logic for when there is an error (ex. error toast)
