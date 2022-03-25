@@ -32,6 +32,10 @@ a {
   color: red;
 }
 
+.gradient-text {
+  color: #3164B8;
+}
+
 .navbar {
   height: 70px;
   width: 100%;
@@ -74,7 +78,7 @@ button {
   border: none;
   color: var(--color-text);
   padding: 1rem 2rem;
-  display: flex;
+  display: inline-block;
   align-items: center;
   text-align: center;
   justify-content: center;
@@ -83,7 +87,7 @@ button {
   font-weight: bold;
   border-radius: 0.25rem;
   cursor: pointer;
-  margin: 0.5rem 1rem 0.5rem 0;
+  margin: 0.5rem 1rem 0.5rem 1rem;
 }
 
 button:disabled,
@@ -112,10 +116,6 @@ button.btn-gradient {
     #bbc0fe 196.9deg,
     #4285f4 370.74deg
   );
-
-  margin-right: 0px;
-  padding-right: 16px;
-  padding-left: 16px;
   font-size: 20px;
 }
 
@@ -156,13 +156,6 @@ button.btn-gradient {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.centered-horizontal {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0%);
   text-align: center;
 }
 

@@ -62,16 +62,13 @@ function SigninForm() {
         />
         <button
           type="submit"
-          className="btn-gradient centered-horizontal"
+          className="btn-gradient"
           disabled={!formEmail || !formPassword}
         >
-          submit
+          Sign in
         </button>
       </form>
-      <h2>Create account</h2>
-      <Link href="/signup" passHref>
-        <button className="btn-green">Sign up</button>
-      </Link>
+      <h4>Don't have an account? <a href="/signup" className="gradient-text"><u>Sign up!</u></a></h4>
     </>
   );
 }

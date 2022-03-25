@@ -3,7 +3,7 @@ import { UserContext } from "../lib/context";
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
-import styles from '../styles/authentication.module.css'
+import styles from "../styles/Authentication.module.css"
 
 export default function Signup() {
   const { email } = useContext(UserContext);
@@ -120,7 +120,7 @@ function SignUpForm() {
 
         <button
           type="submit"
-          className={"btn-gradient centered-horizontal"}
+          className={"btn-gradient"}
           disabled={
             !formEmail || !formPassword || !isValidEmail || !isValidPassword
           }
