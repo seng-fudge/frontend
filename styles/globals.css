@@ -32,7 +32,6 @@ a {
   color: red;
 }
 
-
 .navbar {
   height: 70px;
   width: 100%;
@@ -65,12 +64,12 @@ a {
 
 .navbar li {
   border-radius: 50%;
-  
 }
 
 /* Buttons */
 
-.btn, button {
+.btn,
+button {
   background-color: var(--color-gray);
   border: none;
   color: var(--color-text);
@@ -80,7 +79,7 @@ a {
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: bold;
   border-radius: 0.25rem;
   cursor: pointer;
@@ -88,7 +87,7 @@ a {
 }
 
 button:disabled,
-button[disabled]{
+button[disabled] {
   filter: brightness(80%);
   cursor: not-allowed;
 }
@@ -101,4 +100,80 @@ button.btn-red {
 button.btn-green {
   background-color: var(--color-green);
   color: white;
+}
+
+button.btn-gradient{
+  color: white;
+  background: conic-gradient(
+    from 154.3deg at 55.33% 50%,
+    #bbc0fe -163.1deg,
+    #4285f4 10.74deg,
+    rgba(172, 185, 253, 0.9) 103.13deg,
+    #bbc0fe 196.9deg,
+    #4285f4 370.74deg
+  );
+}
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.gradient {
+  background: conic-gradient(
+    from 154.3deg at 55.33% 50%,
+    #bbc0fe -163.1deg,
+    #4285f4 10.74deg,
+    rgba(172, 185, 253, 0.9) 103.13deg,
+    #bbc0fe 196.9deg,
+    #4285f4 370.74deg
+  );
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.centered-horizontal{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  text-align: center;
+}
+
+.title {
+font-family: 'Ubuntu';
+font-style: normal;
+font-weight: 700;
+font-size: 80px;
+line-height: 92px;
+display: flex;
+align-items: center;
+margin-top: 10px;
+margin-bottom: 10px;
+background: linear-gradient(90deg, #3164B8 -4.36%, #BBC0FE 87.92%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+
 }

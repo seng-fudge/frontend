@@ -7,7 +7,16 @@ import { toast } from "react-hot-toast";
 export default function Signup() {
   const { email } = useContext(UserContext);
 
-  return <main>{email ? <LogoutButton /> : <SignUpForm />}</main>;
+  return (
+    <>
+      <div className="split left gradient"></div>
+      <div className="split right">
+        <div className="centered">
+          {email ? <LogoutButton /> : <SignUpForm />}
+        </div>
+      </div>
+    </>
+  );
 }
 
 function SignUpForm() {
@@ -65,7 +74,7 @@ function SignUpForm() {
       } else {
         const data = await response.json();
 
-        toast.error(data['message'])
+        toast.error(data["message"]);
       }
     } catch (error) {
       // enter your logic for when there is an error (ex. error toast)
@@ -77,7 +86,7 @@ function SignUpForm() {
 
   return (
     <section>
-      <h2>Sign up</h2>
+      <h2 className="title">Sign up</h2>
       <form onSubmit={() => onSubmit()}>
         <div>
           <input
@@ -108,7 +117,7 @@ function SignUpForm() {
 
         <button
           type="submit"
-          className="btn-green"
+          className="btn-gradient centered-horizontal"
           disabled={
             !formEmail || !formPassword || !isValidEmail || !isValidPassword
           }
