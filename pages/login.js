@@ -29,7 +29,7 @@ function SigninForm() {
   };
 
   const onSubmit = async (e) => {
-    //TODO Add api login call
+    event.preventDefault();
   };
 
   return (
