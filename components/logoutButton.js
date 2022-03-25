@@ -20,7 +20,11 @@ export default function LogoutButton() {
           }),
         }
       );
-    } catch {}
+    } catch (error) {
+      // enter your logic for when there is an error (ex. error toast)
+
+      console.log(error);
+    }
 
 
     setEmail(null);
