@@ -3,6 +3,7 @@ import { UserContext } from "../lib/context";
 import { useContext, useState, useEffect } from "react";
 import Link from "next/link";
 import { toast } from "react-hot-toast";
+import styles from '../styles/authentication.module.css'
 
 export default function Signup() {
   const { email } = useContext(UserContext);
@@ -32,9 +33,9 @@ function SignUpForm() {
   const onChangeEmail = (e) => {
     const val = e.target.value;
 
-    setIsValidEmail(ValidateEmail(val));
-
     setFormEmail(val);
+
+    setIsValidEmail(ValidateEmail(val));
   };
 
   const onChangePassword = (e) => {
@@ -94,6 +95,7 @@ function SignUpForm() {
             placeholder="email"
             value={formEmail}
             onChange={onChangeEmail}
+            className = {styles.input}
           />
           {!isValidEmail ? <h4 className="red-text">Invalid email</h4> : <></>}
         </div>
@@ -104,6 +106,7 @@ function SignUpForm() {
             placeholder="password"
             value={formPassword}
             onChange={onChangePassword}
+            className = {styles.input}
           />
           {!isValidPassword ? (
             <h4 className="red-text">
@@ -117,7 +120,7 @@ function SignUpForm() {
 
         <button
           type="submit"
-          className="btn-gradient centered-horizontal"
+          className={"btn-gradient centered-horizontal"}
           disabled={
             !formEmail || !formPassword || !isValidEmail || !isValidPassword
           }

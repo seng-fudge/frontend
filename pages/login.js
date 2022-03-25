@@ -5,11 +5,21 @@ import { useState } from "react";
 import { UserContext } from "../lib/context";
 import Link from "next/link";
 import LogoutButton from "../components/logoutButton";
+import styles from "../styles/Authentication.module.css"
 
 export default function Login() {
   const { email } = useContext(UserContext);
 
-  return <main>{email ? <LogoutButton/> : <SigninForm />}</main>;
+  return (
+    <>
+      <div className="split left gradient"></div>
+      <div className="split right">
+        <div className="centered">
+          {email ? <LogoutButton /> : <SigninForm />}
+        </div>
+      </div>
+    </>
+  );
 }
 
 function SigninForm() {
@@ -33,24 +43,26 @@ function SigninForm() {
   };
 
   return (
-    <section>
-      <h2>Sign in</h2>
+    <>
+      <h2 className="title">Sign in</h2>
       <form onSubmit={onSubmit}>
         <input
           name="email"
           placeholder="email"
           value={formEmail}
           onChange={onChangeEmail}
+          className = {styles.input}
         />
         <input
           name="password"
           placeholder="password"
           value={formPassword}
           onChange={onChangePassword}
+          className = {styles.input}
         />
         <button
           type="submit"
-          className="btn-green"
+          className="btn-gradient centered-horizontal"
           disabled={!formEmail || !formPassword}
         >
           submit
@@ -60,6 +72,6 @@ function SigninForm() {
       <Link href="/signup" passHref>
         <button className="btn-green">Sign up</button>
       </Link>
-    </section>
+    </>
   );
 }

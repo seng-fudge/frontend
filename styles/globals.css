@@ -102,7 +102,7 @@ button.btn-green {
   color: white;
 }
 
-button.btn-gradient{
+button.btn-gradient {
   color: white;
   background: conic-gradient(
     from 154.3deg at 55.33% 50%,
@@ -112,6 +112,11 @@ button.btn-gradient{
     #bbc0fe 196.9deg,
     #4285f4 370.74deg
   );
+
+  margin-right: 0px;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: 20px;
 }
 
 /* Split the screen in half */
@@ -154,7 +159,7 @@ button.btn-gradient{
   text-align: center;
 }
 
-.centered-horizontal{
+.centered-horizontal {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -162,18 +167,17 @@ button.btn-gradient{
 }
 
 .title {
-font-family: 'Ubuntu';
-font-style: normal;
-font-weight: 700;
-font-size: 80px;
-line-height: 92px;
-display: flex;
-align-items: center;
-margin-top: 10px;
-margin-bottom: 10px;
-background: linear-gradient(90deg, #3164B8 -4.36%, #BBC0FE 87.92%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 92px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3164b8 -4.36%, #bbc0fe 87.92%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
