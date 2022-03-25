@@ -102,6 +102,7 @@ function SignUpForm() {
 
         <div>
           <input
+            type="password"
             name="password"
             placeholder="password"
             value={formPassword}

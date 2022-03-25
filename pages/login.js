@@ -90,6 +90,7 @@ function SigninForm() {
           className = {styles.input}
         />
         <input
+          type="password"
           name="password"
           placeholder="password"
           value={formPassword}
