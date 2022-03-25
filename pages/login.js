@@ -2,11 +2,12 @@ import { useContext } from "react";
 import { useState } from "react";
 import { UserContext } from "../lib/context";
 import LogoutButton from "../components/logoutButton";
-import styles from "../styles/Authentication.module.css"
+import styles from "../styles/Authentication.module.css";
 import toast from "react-hot-toast";
+import Loader from "../components/Loader";
 
 export default function Login() {
-  const { email} = useContext(UserContext);
+  const { email } = useContext(UserContext);
 
   return (
     <>
@@ -21,7 +22,10 @@ export default function Login() {
 }
 
 function SigninForm() {
-  const {setCreateToken, setSendToken, setEmail, setPassword} = useContext(UserContext)
+  const { setCreateToken, setSendToken, setEmail, setPassword } =
+    useContext(UserContext);
+
+  const [loading, setLoading] = useState(false);
 
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
@@ -40,6 +44,8 @@ function SigninForm() {
 
   const onSubmit = async (e) => {
     event.preventDefault();
+
+    setLoading(true);
 
     console.log("Button pressed");
 
@@ -64,8 +70,8 @@ function SigninForm() {
 
         setEmail(formEmail);
         setPassword(formPassword);
-        setCreateToken(data['create'])
-        setSendToken(data['send'])
+        setCreateToken(data["create"]);
+        setSendToken(data["send"]);
       } else {
         const data = await response.json();
 
@@ -76,10 +82,14 @@ function SigninForm() {
 
       console.log(error);
     }
+
+    setLoading(false);
   };
 
-  return (
-    <>
+  return loading ? (
+    <Loader />
+  ) : (
+    <section>
       <h2 className="title">Sign in</h2>
       <form onSubmit={() => onSubmit()}>
         <input
@@ -87,7 +97,7 @@ function SigninForm() {
           placeholder="email"
           value={formEmail}
           onChange={onChangeEmail}
-          className = {styles.input}
+          className={styles.input}
         />
         <input
           type="password"
@@ -95,7 +105,7 @@ function SigninForm() {
           placeholder="password"
           value={formPassword}
           onChange={onChangePassword}
-          className = {styles.input}
+          className={styles.input}
         />
         <button
           type="submit"
@@ -105,7 +115,12 @@ function SigninForm() {
           Sign in
         </button>
       </form>
-      <h4>Don't have an account? <a href="/signup" className="gradient-text"><u>Sign up!</u></a></h4>
-    </>
+      <h4>
+        Don't have an account?{" "}
+        <a href="/signup" className="gradient-text">
+          <u>Sign up!</u>
+        </a>
+      </h4>
+    </section>
   );
 }

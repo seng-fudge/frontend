@@ -2,7 +2,8 @@ import LogoutButton from "../components/logoutButton";
 import { UserContext } from "../lib/context";
 import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import styles from "../styles/Authentication.module.css"
+import styles from "../styles/Authentication.module.css";
+import Loader from "../components/Loader";
 
 export default function Signup() {
   const { email } = useContext(UserContext);
@@ -20,7 +21,8 @@ export default function Signup() {
 }
 
 function SignUpForm() {
-  const {setEmail,setPassword, setCreateToken, setSendToken } = useContext(UserContext);
+  const { setEmail, setPassword, setCreateToken, setSendToken } =
+    useContext(UserContext);
 
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
@@ -28,6 +30,8 @@ function SignUpForm() {
   const [isValidEmail, setIsValidEmail] = useState(true);
 
   const [isValidPassword, setIsValidPassword] = useState(true);
+
+  const [loading, setLoading] = useState(false);
 
   const onChangeEmail = (e) => {
     const val = e.target.value;
@@ -47,6 +51,8 @@ function SignUpForm() {
 
   const onSubmit = async (e) => {
     event.preventDefault();
+
+    setLoading(true)
 
     console.log("Button pressed");
 
@@ -71,8 +77,8 @@ function SignUpForm() {
 
         setEmail(formEmail);
         setPassword(formPassword);
-        setCreateToken(data['create'])
-        setSendToken(data['send'])
+        setCreateToken(data["create"]);
+        setSendToken(data["send"]);
       } else {
         const data = await response.json();
 
@@ -83,9 +89,13 @@ function SignUpForm() {
 
       console.log(error);
     }
+
+    setLoading(false);
   };
 
-  return (
+  return loading ? (
+    <Loader />
+  ) : (
     <section>
       <h2 className="title">Sign up</h2>
       <form onSubmit={() => onSubmit()}>
@@ -95,7 +105,7 @@ function SignUpForm() {
             placeholder="email"
             value={formEmail}
             onChange={onChangeEmail}
-            className = {styles.input}
+            className={styles.input}
           />
           {!isValidEmail ? <h4 className="red-text">Invalid email</h4> : <></>}
         </div>
@@ -107,7 +117,7 @@ function SignUpForm() {
             placeholder="password"
             value={formPassword}
             onChange={onChangePassword}
-            className = {styles.input}
+            className={styles.input}
           />
           {!isValidPassword ? (
             <h4 className="red-text">
