@@ -21,7 +21,7 @@ export default function Signup() {
 }
 
 function SignUpForm() {
-  const { email, setEmail, password, setPassword } = useContext(UserContext);
+  const {setEmail,setPassword, setCreateToken, setSendToken } = useContext(UserContext);
 
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
@@ -72,6 +72,8 @@ function SignUpForm() {
 
         setEmail(formEmail);
         setPassword(formPassword);
+        setCreateToken(data['create'])
+        setSendToken(data['send'])
       } else {
         const data = await response.json();
 
@@ -120,7 +122,7 @@ function SignUpForm() {
 
         <button
           type="submit"
-          className={"btn-gradient"}
+          className={"btn-gradient large"}
           disabled={
             !formEmail || !formPassword || !isValidEmail || !isValidPassword
           }

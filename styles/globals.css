@@ -116,6 +116,9 @@ button.btn-gradient {
     #bbc0fe 196.9deg,
     #4285f4 370.74deg
   );
+}
+
+button.large {
   font-size: 20px;
 }
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { UserContext } from "../lib/context";
+import LogoutButton from "./logoutButton";
 
 export default function NavBar() {
   const { email } = useContext(UserContext);
@@ -10,12 +11,10 @@ export default function NavBar() {
       <ul>
         <li>
           <Link href="/" passHref>
-            <button className="btn-red">Home</button>
+            <button className="btn-gradient">Home</button>
           </Link>
         </li>
-        {email ? (<li><Link href="/login" passHref>
-          <button className="btn-red">Logout</button>
-        </Link></li>) : (<li><Link href="/login" passHref>
+        {email ? (<li><LogoutButton/></li>) : (<li><Link href="/login" passHref>
           <button className="btn-green">Login</button>
         </Link></li>)}
       </ul>

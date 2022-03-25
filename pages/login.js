@@ -105,7 +105,7 @@ function SigninForm() {
         />
         <button
           type="submit"
-          className="btn-gradient"
+          className="btn-gradient large"
           disabled={!formEmail || !formPassword}
         >
           Sign in
