@@ -1,9 +1,6 @@
-import Head from "next/head";
-import Image from "next/image";
 import { useContext } from "react";
 import { useState } from "react";
 import { UserContext } from "../lib/context";
-import Link from "next/link";
 import LogoutButton from "../components/logoutButton";
 import styles from "../styles/Authentication.module.css"
 import toast from "react-hot-toast";
@@ -13,8 +10,8 @@ export default function Login() {
 
   return (
     <>
-      <div className="split left gradient"></div>
-      <div className="split right">
+      <div className="split right gradient"></div>
+      <div className="split left">
         <div className="centered">
           {email ? <LogoutButton /> : <SigninForm />}
         </div>
@@ -63,11 +60,7 @@ function SigninForm() {
       );
 
       if (response.ok) {
-        console.log("Enter");
-
         const data = await response.json();
-
-        
 
         setEmail(formEmail);
         setPassword(formPassword);

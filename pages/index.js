@@ -12,6 +12,11 @@ export default function Home() {
     <main>
       <h1 className='red_text'>Home page</h1>
       <h2 className={styles.rainbow_text}>Some rainbow text</h2>
+      <h1 className='red_text'>Content data</h1>
+         <h5>Email: {email}</h5>
+         <h5>Password: {password}</h5>
+        <h5>Send: {sendToken}</h5>
+         <h5>Create: {createToken}</h5>
     </main>
   );
 }

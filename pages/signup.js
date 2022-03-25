@@ -1,7 +1,6 @@
 import LogoutButton from "../components/logoutButton";
 import { UserContext } from "../lib/context";
 import { useContext, useState, useEffect } from "react";
-import Link from "next/link";
 import { toast } from "react-hot-toast";
 import styles from "../styles/Authentication.module.css"
 
@@ -84,7 +83,6 @@ function SignUpForm() {
 
       console.log(error);
     }
-    // fetchThing();
   };
 
   return (
@@ -171,8 +169,4 @@ function ValidatePassword(password) {
   }
 
   return true;
-}
-
-function fetchThing() {
-  fetch("https://google.com");
 }
