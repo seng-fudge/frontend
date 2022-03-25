@@ -1,0 +1,74 @@
+/* Background Gradient */
+.background {
+    position: absolute;
+    width: 704px;
+    height: 982px;
+    left: 808px;
+    top: 0px;
+
+    background: conic-gradient(from 154.3deg at 55.33% 50%, #BBC0FE -0.74deg, rgba(66, 133, 244, 0.88) 153.75deg, #BBC0FE 359.26deg, rgba(66, 133, 244, 0.88) 513.75deg);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Title */
+.title {
+    position: absolute;
+    width: 596px;
+    height: 104px;
+    left: 142px;
+    top: 226px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 80px;
+    line-height: 92px;
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(90deg, #3164B8 -4.36%, #BBC0FE 87.92%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* Email : */
+.emailText {
+    position: absolute;
+    width: 184px;
+    height: 51px;
+    left: 142px;
+    top: 351px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+
+    color: #3164B8;
+
+}
+
+/* Password : */
+.passwordText {
+    position: absolute;
+    width: 172px;
+    height: 51px;
+    left: 142px;
+    top: 491px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    display: flex;
+    align-items: center;
+
+    color: #3164B8;
+
+}
