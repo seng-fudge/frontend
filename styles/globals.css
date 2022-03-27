@@ -7,7 +7,7 @@ body {
 }
 
 main {
-  padding: 3rem 10vw;
+  padding: 4rem 10vw;
 }
 
 :root {
@@ -28,10 +28,13 @@ a {
   box-sizing: border-box;
 }
 
-.red_text {
+.red-text {
   color: red;
 }
 
+.gradient-text {
+  color: #3164B8;
+}
 
 .navbar {
   height: 70px;
@@ -65,29 +68,128 @@ a {
 
 .navbar li {
   border-radius: 50%;
-  
 }
 
 /* Buttons */
 
-.btn, button {
+.btn,
+button {
   background-color: var(--color-gray);
   border: none;
   color: var(--color-text);
   padding: 1rem 2rem;
-  display: flex;
+  display: inline-block;
   align-items: center;
   text-align: center;
   justify-content: center;
   text-decoration: none;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-weight: bold;
   border-radius: 0.25rem;
   cursor: pointer;
-  margin: 0.5rem 1rem 0.5rem 0;
+  margin: 0.5rem 1rem 0.5rem 1rem;
+}
+
+button:disabled,
+button[disabled] {
+  filter: brightness(80%);
+  cursor: not-allowed;
 }
 
 button.btn-red {
   background-color: var(--color-red);
   color: white;
+}
+
+button.btn-green {
+  background-color: var(--color-green);
+  color: white;
+}
+
+button.btn-gradient {
+  color: white;
+  background: conic-gradient(
+    from 154.3deg at 55.33% 50%,
+    #bbc0fe -163.1deg,
+    #4285f4 10.74deg,
+    rgba(172, 185, 253, 0.9) 103.13deg,
+    #bbc0fe 196.9deg,
+    #4285f4 370.74deg
+  );
+}
+
+button.large {
+  font-size: 20px;
+}
+
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.gradient {
+  background: conic-gradient(
+    from 154.3deg at 55.33% 50%,
+    #bbc0fe -163.1deg,
+    #4285f4 10.74deg,
+    rgba(172, 185, 253, 0.9) 103.13deg,
+    #bbc0fe 196.9deg,
+    #4285f4 370.74deg
+  );
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.title {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 92px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #3164b8 -4.36%, #bbc0fe 87.92%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Loader */
+
+.loader {
+  border: 10px solid var(--color-bg); 
+  border-top: 10px solid #3164B8;; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
