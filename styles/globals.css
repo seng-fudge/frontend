@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: linear-gradient(90deg, #3164b8 -4.36%, #bbc0fe 87.92%);
 }
 
 main {
@@ -106,6 +107,21 @@ button.btn-green {
   color: white;
 }
 
+button.btn-white {
+  background-color: white;
+  color: black;
+}
+
+button.btn-outline-white{
+  border: 2px solid white;
+  color: white;
+  background-color: transparent;
+}
+
+button.btn-circular{
+  border-radius: 25%
+}
+
 button.btn-gradient {
   color: white;
   background: conic-gradient(
@@ -118,8 +134,19 @@ button.btn-gradient {
   );
 }
 
+
 button.large {
   font-size: 20px;
+}
+
+.full {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
 }
 
 /* Split the screen in half */
@@ -181,6 +208,7 @@ button.large {
 .pointer{
   cursor:pointer;
 }
+
 
 /* Loader */
 
