@@ -5,6 +5,7 @@ import LogoutButton from "../components/logoutButton";
 import styles from "../styles/Authentication.module.css";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
+import Link from "next/link";
 
 export default function Login() {
   const { email } = useContext(UserContext);
@@ -116,10 +117,10 @@ function SigninForm() {
         </button>
       </form>
       <h4>
-        Don't have an account?{" "}
-        <a href="/signup" className="gradient-text">
-          <u>Sign up!</u>
-        </a>
+        Don{"'"}t have an account?{" "}
+        <Link href="/signup" passHref>
+          <u className="gradient-text pointer">Sign up!</u>
+        </Link>
       </h4>
     </section>
   );

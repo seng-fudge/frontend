@@ -178,6 +178,10 @@ button.large {
   background-clip: text;
 }
 
+.pointer{
+  cursor:pointer;
+}
+
 /* Loader */
 
 .loader {
