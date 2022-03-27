@@ -15,7 +15,7 @@ export default function NavBar() {
           </Link>
         </li>
         {email ? (<li><LogoutButton/></li>) : (<li><Link href="/login" passHref>
-          <button className="btn-green">Login</button>
+          <button className="btn-gradient">Login</button>
         </Link></li>)}
       </ul>
     </nav>
