@@ -13,12 +13,12 @@ export default function Home() {
     <div className="full gradient">
       <div className="split left">
         <Link href="/createInvoice" passHref>
-          <button className="btn-outline-white centered large">Create</button>
+          <button className="btn-outline-white centered extra-large">Create</button>
         </Link>
       </div>
       <div className="split right">
         <Link href="/sendInvoice" passHref>
-          <button className="btn-outline-white centered large">Send</button>
+          <button className="btn-outline-white centered extra-large">Send</button>
         </Link>
       </div>
     </div>

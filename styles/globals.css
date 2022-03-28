@@ -136,6 +136,10 @@ button.large {
   font-size: 20px;
 }
 
+button.extra-large {
+  font-size: 60px;
+}
+
 .full {
   height: 100%;
   width: 100%;
