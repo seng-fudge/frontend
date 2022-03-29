@@ -82,6 +82,7 @@ function SigninForm() {
     }
 
     setLoading(false);
+    location.href('/')
   };
 
   return loading ? (
