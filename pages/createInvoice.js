@@ -9,12 +9,7 @@ export default function CreateInvoice() {
 
   return (
     <>
-      <div className="split left gradient"></div>
-      <div className="split right">
-        <div className="centered">
-          {<InvoiceCreationForm />}
-        </div>
-      </div>
+        {<InvoiceCreationForm />}
     </>
   );
 }
@@ -31,9 +26,11 @@ function InvoiceCreationForm() {
 
     console.log("Button pressed");
 
+    console.log(getFromForm("formCustomerContactName"));
+
     try {
       const response = await fetch(
-        "https://seng-test.azurewebsites.net/json/convert",
+        // "https://seng-test.azurewebsites.net/json/convert",
         {
           method: "POST",
           headers: {
@@ -41,6 +38,8 @@ function InvoiceCreationForm() {
           },
           body: JSON.stringify({
             // your expected POST request payload goes here
+
+            // Already set
             UBLID: 2.1,
             CustomizationID: "urn:cen.eu:en16931:2017#conformant#urn:fdc:peppol.eu:2017:poacc:billing:international:aunz:3.0",
             ProfileID: "urn:fdc:peppol.eu:2017:poacc:billing:01:1.0",
@@ -52,6 +51,7 @@ function InvoiceCreationForm() {
             BuyerReference: "EBWASP1002",
             AddDocReference: "ebwasp1002",
 
+            // details from sign up
             SupplierID: 80647710156,
             SupplierStreet: "100 Business Street",
             SupplierCity: "Dulwich Hill",
@@ -59,31 +59,37 @@ function InvoiceCreationForm() {
             SupplierCountry: "AU",
             SupplierRegistration: "Ebusiness Software Services Pty Ltd",
 
-            CustomerStreet: "Suite 132 Level 45",
-            CustomerAddStreet: "999 The Crescent",
-            CustomerCity: "Homebush West",
-            CustomerPost: 2140,
-            CustomerCountry: "AU",
-            CustomerRegistration: "Awolako Enterprises Pty Ltd",
-            CustomerEmail: "email",
-            CustomerContactName: "Tay",
+            // details from create form
 
-            PaymentType: 1,
-            PaymentID: "EBWASP1002",
-            PaymentTerms: "As agreed",
+            // customer details
+            CustomerStreet: getFromForm("formCustomerStreet"),
+            CustomerAddStreet: getFromForm("formCustomerAddStreet"),
+            CustomerCity: getFromForm("formCustomerCity"),
+            CustomerPost: getFromForm("formCustomerPost"),
+            CustomerCountry: getFromForm("formCustomerCountry"),
+            CustomerRegistration: getFromForm("formCustomerRegistration"),
+            CustomerEmail: getFromForm("formCustomerEmail"),
+            CustomerContactName: getFromForm("formCustomerContactName"),
 
-            TaxAmount: 10,
-            TaxableAmount: 100,
-            TaxSubtotalAmount: 10,
-            TaxID: "S",
-            TaxPercent: 10,
-            TaxSchemeID: "GST",
-            LegalLineExtension: 100,
-            TaxExclusiveAmount: 100,
-            TaxInclusiveAmount: 110,
-            PayableRoundingAmount: 0,
-            PayableAmount: 110,
+            // payment details
+            PaymentType: getFromForm("formPaymentType"),
+            PaymentID: getFromForm("formPaymentID"),
+            PaymentTerms: getFromForm("formPaymentTerms"),
 
+            // tax + amount details
+            TaxAmount: getFromForm("formTaxAmount"),
+            TaxableAmount: getFromForm("formTaxableAmount"),
+            TaxSubtotalAmount: getFromForm("formTaxSubtotalAmount"),
+            TaxID: getFromForm("formTaxID"),
+            TaxPercent: getFromForm("formTaxPercent"),
+            TaxSchemeID: getFromForm("formTaxSchemeID"),
+            LegalLineExtension: getFromForm("formTaxExclusiveAmount"),
+            TaxExclusiveAmount: getFromForm("formTaxExclusiveAmount"),
+            TaxInclusiveAmount: getFromForm("formTaxExclusiveAmount") + getFromForm("formTaxAmount"),
+            PayableRoundingAmount: getFromForm("formPayableRoundingAmount"),
+            PayableAmount: getFromForm("formTaxExclusiveAmount") + getFromForm("formTaxAmount") + getFromForm("formPayableRoundingAmount"),
+
+            // invoice item details
             InvoiceID: 1,
             InvoiceQuantity: 500,
             InvoiceLineExtension: 100,
@@ -117,219 +123,174 @@ function InvoiceCreationForm() {
     <Loader />
   ) : (
     <section>
-      <h2 className="title">XML Details</h2>
+      <div>
       <form onSubmit={() => onSubmit()}>
-        <div>
-          <input
-            name="BuyerReference"
-            placeholder="Buyer reference"
-            value={formBuyerReference}
-            className={styles.input}
-          />
-        </div>
 
-        <div className="split right">
-            <h2 className="title">Customer Details</h2>
+        <div className="split left">
+            <div>
+            <input
+                id="formBuyerReference"
+                placeholder="Buyer reference"
+            />
+            </div>
+
+            <h2>Customer Details</h2>
 
             <div>
             <input
-                name="CustomerContactName"
-                placeholder="Name"
-                value={formCustomerContactName}
-                className={styles.input}
+                id="formCustomerContactName"
+                placeholder="Customer Name"
             />
             </div>
 
             <div>
             <input
-                name="CustomerRegistration"
-                placeholder="Registered Name"
-                value={formCustomerRegistration}
-                className={styles.input}
+                id="formCustomerRegistration"
+                placeholder="Registered Business Name"
             />
             </div>
 
             <div>
             <input
-                name="CustomerEmail"
+                id="formCustomerEmail"
                 placeholder="Email"
-                value={formCustomerEmail}
-                className={styles.input}
             />
             </div>
 
             <div>
             <input
-                name="CustomerStreet"
+                id="formCustomerStreet"
                 placeholder="Street Address"
-                value={formCustomerStreet}
-                className={styles.input}
             />
             </div>
 
             <div>
             <input
-                name="CustomerAddStreet"
+                id="formCustomerAddStreet"
                 placeholder="Additional Street Address"
-                value={formCustomerAddStreet}
-                className={styles.input}
             />
             </div>
 
             <div>
             <input
-                name="CustomerCity"
+                id="formCustomerCity"
                 placeholder="City"
-                value={formCustomerCity}
-                className={styles.input}
             />
             </div>
 
             <div>
             <input
-                name="CustomerPost"
+                id="formCustomerPost"
                 placeholder="Postcode"
-                value={formCustomerPost}
-                className={styles.input}
             />
             </div>
 
             <div>
             <input
-                name="CustomerCountry"
+                id="formCustomerCountry"
                 placeholder="Country"
-                value={formCustomerCountry}
-                className={styles.input}
             />
             </div>
             
         </div>
 
-        <div className="split left">
-            <h2 className="title">Customer Details</h2>
-
-            <div>
-            <input
-                name="CustomerRegistration"
-                placeholder="Registered Name"
-                value={formCustomerRegistration}
-                className={styles.input}
-            />
-            </div>
-
-            <div>
-            <input
-                name="CustomerStreet"
-                placeholder="Street Address"
-                value={formCustomerStreet}
-                className={styles.input}
-            />
-            </div>
-
-            <div>
-            <input
-                name="CustomerAddStreet"
-                placeholder="Additional Street Address"
-                value={formCustomerAddStreet}
-                className={styles.input}
-            />
-            </div>
-
-            <div>
-            <input
-                name="CustomerCity"
-                placeholder="City"
-                value={formCustomerCity}
-                className={styles.input}
-            />
-            </div>
-
-            <div>
-            <input
-                name="CustomerPost"
-                placeholder="Postcode"
-                value={formCustomerPost}
-                className={styles.input}
-            />
-            </div>
-
-            <div>
-            <input
-                name="CustomerCountry"
-                placeholder="Country"
-                value={formCustomerCountry}
-                className={styles.input}
-            />
-            </div>
-        </div>
-
         <div className="split right">
-            <h2 className="title">Invoice Details</h2>
+            <h2>Payment Details</h2>
 
             <div>
             <input
-                name="InvoiceQuantity"
-                placeholder="Invoice Quantity"
-                value={formInvoiceQuantity}
-                type="number"
-                className={styles.input}
+                id="formPaymentType"
+                placeholder="Payment Type"
+            />
+            </div>
+            
+            <div>
+            <input
+                id="formPaymentID"
+                placeholder="Payment ID"
             />
             </div>
 
             <div>
             <input
-                name="CustomerStreet"
-                placeholder="Street Address"
-                value={formCustomerStreet}
-                className={styles.input}
+                id="formPaymentTerms"
+                placeholder="Payment Terms"
+            />
+            </div>
+
+            <h2>Tax Details</h2>
+
+            <div>
+            <input
+                id="formTaxAmount"
+                placeholder="Tax Amount"
             />
             </div>
 
             <div>
             <input
-                name="CustomerAddStreet"
-                placeholder="Additional Street Address"
-                value={formCustomerAddStreet}
-                className={styles.input}
+                id="formTaxableAmount"
+                placeholder="Taxable Amount"
             />
             </div>
 
             <div>
             <input
-                name="CustomerCity"
-                placeholder="City"
-                value={formCustomerCity}
-                className={styles.input}
+                id="formTaxSubtotalAmount"
+                placeholder="Tax Subtotal Amount"
             />
             </div>
 
             <div>
             <input
-                name="CustomerPost"
-                placeholder="Postcode"
-                value={formCustomerPost}
-                className={styles.input}
+                id="formTaxID"
+                placeholder="Tax ID"
             />
             </div>
 
             <div>
             <input
-                name="CustomerCountry"
-                placeholder="Country"
-                value={formCustomerCountry}
-                className={styles.input}
+                id="formTaxPercent"
+                placeholder="Tax Percent"
             />
             </div>
+
+            <div>
+            <input
+                id="formTaxSchemeID"
+                placeholder="Tax Scheme ID"
+            />
+            </div>
+
+            <div>
+            <input
+                id="formTaxExclusiveAmount"
+                placeholder="Tax Exclusive Amount"
+            />
+            </div>
+
+            <div>
+            <input
+                id="formPayableRoundingAmount"
+                placeholder="Payable Rounding Amount"
+            />
+            </div>
+
+            <button
+                type="submit"
+                className={"btn-gradient large"}
+            >
+            Create Invoice
+            </button>
         </div>
         
 
-        <button
-          type="submit"
-          className={"btn-gradient large"}
-        >
-          Create Invoice
-        </button>
       </form>
+      </div>
     </section>
   );
+}
+
+function getFromForm(elementName) {
+    return document.getElementById(elementName).value;
 }
