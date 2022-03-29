@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import styles from "../styles/Authentication.module.css";
 import Loader from "../components/Loader";
+import { useRouter } from "next/router";
 
 export default function Signup() {
   const { email } = useContext(UserContext);
@@ -21,6 +22,7 @@ export default function Signup() {
 }
 
 function SignUpForm() {
+
   const { setEmail, setToken } =
     useContext(UserContext);
 
@@ -32,6 +34,8 @@ function SignUpForm() {
   const [isValidPassword, setIsValidPassword] = useState(true);
 
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const onChangeEmail = (e) => {
     const val = e.target.value;
@@ -77,6 +81,8 @@ function SignUpForm() {
 
         setEmail(formEmail);
         setToken(data['token']);
+        
+        router.push("/user")
       } else {
         const data = await response.json();
 
