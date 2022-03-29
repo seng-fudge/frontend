@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import { useContext } from "react";
 import Loader from "../components/Loader";
 import { UserContext } from "../lib/context";
@@ -8,15 +9,22 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   const { email, password, sendToken, createToken } = useContext(UserContext);
 
-  return (
-    <main>
-      <h1 className="red_text">Home page</h1>
-      <h2 className={styles.rainbow_text}>Some rainbow text</h2>
-      <h1 className="red_text">Content data</h1>
-      <h5>Email: {email}</h5>
-      <h5>Password: {password}</h5>
-      <h5>Send: {sendToken}</h5>
-      <h5>Create: {createToken}</h5>
-    </main>
+  return email ? (
+    <div className="full gradient">
+      <div className="split left">
+        <Link href="/createInvoice" passHref>
+          <button className="btn-outline-white centered extra-large">Create</button>
+        </Link>
+      </div>
+      <div className="split right">
+        <Link href="/sendInvoice" passHref>
+          <button className="btn-outline-white centered extra-large">Send</button>
+        </Link>
+      </div>
+    </div>
+  ) : (
+    <Link href="/signup" passHref>
+      <button className="btn-gradient large centered">Signup</button>
+    </Link>
   );
 }
