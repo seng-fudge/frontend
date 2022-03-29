@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import styles from "../styles/Authentication.module.css";
 import Loader from "../components/Loader";
+import FormInput from "../components/FormInput";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -122,163 +123,58 @@ function InvoiceCreationForm() {
   return loading ? (
     <Loader />
   ) : (
-    <section>
+    <body>
       <div>
       <form onSubmit={() => onSubmit()}>
 
         <div className="split left">
-            <div>
-            <input
-                id="formBuyerReference"
-                placeholder="Buyer reference"
-            />
-            </div>
+            
+            <FormInput id="formBuyerReference" name="Buyer reference" type="text" />
 
-            <h2>Customer Details</h2>
+            <h1 className="gradient-text">Customer Details</h1>
 
-            <div>
-            <input
-                id="formCustomerContactName"
-                placeholder="Customer Name"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerRegistration"
-                placeholder="Registered Business Name"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerEmail"
-                placeholder="Email"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerStreet"
-                placeholder="Street Address"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerAddStreet"
-                placeholder="Additional Street Address"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerCity"
-                placeholder="City"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerPost"
-                placeholder="Postcode"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formCustomerCountry"
-                placeholder="Country"
-            />
-            </div>
+            <FormInput id="formCustomerContactName" name="Customer Name" type="text" />
+            <FormInput id="formCustomerRegistration" name="Registered Business Name" type="text" />
+            <FormInput id="formCustomerEmail" name="Email" type="email" />
+            <FormInput id="formCustomerStreet" name="Street Address" type="text" />
+            <FormInput id="formCustomerAddStreet" name="Additional Street Address" type="text" />
+            <FormInput id="formCustomerCity" name="City" type="text" />
+            <FormInput id="formCustomerPost" name="Postcode" type="number" />
+            <FormInput id="formCustomerCountry" name="Country" type="text" />
             
         </div>
 
         <div className="split right">
-            <h2>Payment Details</h2>
+            <h1 className="gradient-text">Payment Details</h1>
+            <FormInput id="formPaymentType" name="Payment Type" type="number" />
+        
+            <FormInput id="formPaymentID" name="Payment ID" type="number" />
+            <FormInput id="formPaymentTerms" name="Payment Terms" type="text" />
 
-            <div>
-            <input
-                id="formPaymentType"
-                placeholder="Payment Type"
-            />
-            </div>
-            
-            <div>
-            <input
-                id="formPaymentID"
-                placeholder="Payment ID"
-            />
-            </div>
+            <h1 className="gradient-text">Tax Details</h1>
+            <FormInput id="formTaxAmount" name="Tax Amount" type="number" />
+            <FormInput id="formTaxableAmount" name="Taxable Amount" type="number" />
+            <FormInput id="formTaxSubtotalAmount" name="Tax Subtotal Amount" type="number" />
+            <FormInput id="formTaxID" name="Tax ID" type="number" />
+            <FormInput id="formTaxPercent" name="Tax Percent" type="number" />
+            <FormInput id="formTaxSchemeID" name="Tax Scheme ID" type="number" />
+            <FormInput id="formTaxExclusiveAmount" name="Tax Exclusive Amount" type="number" />
+            <FormInput id="formPayableRoundingAmount" name="Payable Rounding Amount" type="number" />
 
-            <div>
-            <input
-                id="formPaymentTerms"
-                placeholder="Payment Terms"
-            />
-            </div>
-
-            <h2>Tax Details</h2>
-
-            <div>
-            <input
-                id="formTaxAmount"
-                placeholder="Tax Amount"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formTaxableAmount"
-                placeholder="Taxable Amount"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formTaxSubtotalAmount"
-                placeholder="Tax Subtotal Amount"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formTaxID"
-                placeholder="Tax ID"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formTaxPercent"
-                placeholder="Tax Percent"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formTaxSchemeID"
-                placeholder="Tax Scheme ID"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formTaxExclusiveAmount"
-                placeholder="Tax Exclusive Amount"
-            />
-            </div>
-
-            <div>
-            <input
-                id="formPayableRoundingAmount"
-                placeholder="Payable Rounding Amount"
-            />
-            </div>
+            <h1 className="gradient-text">Invoice Item Details</h1>
+            <FormInput id="formInvoiceID" name="Invoice ID" type="tenumberxt" />
+            <FormInput id="formInvoiceQuantity" name="Invoice Quantity" type="number" />
+            <FormInput id="formInvoiceLineExtension" name="Invoice Line Extension" type="number" />
+            <FormInput id="formInvoiceName" name="Invoice Name" type="text" />
+            <FormInput id="formInvoiceTaxID" name="Invoice Tax ID" type="number" />
+            <FormInput id="formInvoiceTaxPercent" name="Invoice Tax Percent" type="number" />
+            <FormInput id="formInvoiceTaxSchemeID" name="Invoice Tax Scheme ID" type="number" />
+            <FormInput id="formInvoicePriceAmount" name="Invoice Price Amount" type="number" />
+            <FormInput id="InvoiceBaseQuantity" name="Invoice Base Quantity" type="number" />
 
             <button
                 type="submit"
-                className={"btn-gradient large"}
+                className="btn-gradient"
             >
             Create Invoice
             </button>
@@ -287,7 +183,7 @@ function InvoiceCreationForm() {
 
       </form>
       </div>
-    </section>
+    </body>
   );
 }
 

@@ -86,7 +86,7 @@ button {
   text-decoration: none;
   font-family: "Noto Sans", sans-serif;
   font-weight: bold;
-  border-radius: 0.25rem;
+  border-radius: 5rem;
   cursor: pointer;
   margin: 0.5rem 1rem 0.5rem 1rem;
 }
