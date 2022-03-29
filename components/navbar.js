@@ -14,6 +14,13 @@ export default function NavBar() {
             <button className="btn-gradient">Home</button>
           </Link>
         </li>
+
+        {email ? (<li>
+          <Link href="/user" passHref>
+            <button className="btn-gradient">User details</button>
+          </Link>
+        </li>) : <></>}
+
         {email ? (<li><LogoutButton/></li>) : (<li><Link href="/login" passHref>
           <button className="btn-gradient">Login</button>
         </Link></li>)}
