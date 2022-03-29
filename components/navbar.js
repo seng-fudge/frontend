@@ -11,7 +11,7 @@ export default function NavBar() {
       <ul>
         <li>
           <Link href="/" passHref>
-            <button className="btn-gradient">Home</button>
+            <img src={"/logo.png"}/>
           </Link>
         </li>
 
