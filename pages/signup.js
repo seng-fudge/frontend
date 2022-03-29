@@ -58,7 +58,7 @@ function SignUpForm() {
 
     try {
       const response = await fetch(
-        "https://fudge-backend.herokuapp.com/user/register",
+        "https://fudge-backend.herokuapp.com/auth/register",
         {
           method: "POST",
           headers: {

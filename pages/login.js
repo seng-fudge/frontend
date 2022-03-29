@@ -6,6 +6,7 @@ import styles from "../styles/Authentication.module.css";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const { email } = useContext(UserContext);
@@ -30,6 +31,8 @@ function SigninForm() {
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
 
+  const router = useRouter();
+
   const onChangeEmail = (e) => {
     const val = e.target.value;
 
@@ -51,14 +54,13 @@ function SigninForm() {
 
     try {
       const response = await fetch(
-        "https://fudge-backend.herokuapp.com/user/login",
+        "https://fudge-backend.herokuapp.com/auth/login",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            // your expected POST request payload goes here
             email: formEmail,
             password: formPassword,
           }),
@@ -70,6 +72,8 @@ function SigninForm() {
 
         setEmail(formEmail);
         setToken(data["token"]);
+
+        router.push("/")
       } else {
         const data = await response.json();
 
@@ -82,7 +86,6 @@ function SigninForm() {
     }
 
     setLoading(false);
-    location.href('/')
   };
 
   return loading ? (
