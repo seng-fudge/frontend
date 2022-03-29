@@ -1,6 +1,6 @@
 import styles from "../styles/User.module.css"
 
-export default function({number, id, name}){
+export default function FormInput({number, id, name}){
     return (number ? FormInputNumber(id, name) : FormInputText(id, name));
 }
 
