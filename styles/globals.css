@@ -190,6 +190,15 @@ button.extra-large {
   text-align: center;
 }
 
+.white-title {
+  color: white;
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 92px;
+}
+
 .title {
   font-family: "Ubuntu";
   font-style: normal;
