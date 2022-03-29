@@ -1,0 +1,11 @@
+.input{
+    border: none;
+    border-bottom: 2px solid #3164B8;
+    margin : 10px;
+    font-size: 15px;
+}
+
+.label{
+    display: inline-block;
+    width: 110px;
+}
