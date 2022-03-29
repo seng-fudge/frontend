@@ -5,14 +5,14 @@ import { UserContext } from "../lib/context";
 import styles from "../styles/User.module.css";
 
 export default function User() {
-  const { user } = useContext(UserContext);
-  return user ? <LoginButton /> : <UserDetailForm />;
+  const { email } = useContext(UserContext);
+  return (!email ? <LoginButton /> : <UserDetailForm />);
 }
 
 function LoginButton() {
   return (
     <Link href="/login" passHref>
-      <button className="centered btn-gradient extra-large">Log in</button>
+      <button className="centered btn-gradient large">Log in</button>
     </Link>
   );
 }
