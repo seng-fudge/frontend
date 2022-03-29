@@ -23,8 +23,7 @@ export default function Login() {
 }
 
 function SigninForm() {
-  const { setCreateToken, setSendToken, setEmail, setPassword } =
-    useContext(UserContext);
+  const { setToken, setEmail } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
 
@@ -52,7 +51,7 @@ function SigninForm() {
 
     try {
       const response = await fetch(
-        "https://authentication-seng2021.herokuapp.com/collectToken",
+        "https://fudge-backend.herokuapp.com/user/login",
         {
           method: "POST",
           headers: {
@@ -70,9 +69,7 @@ function SigninForm() {
         const data = await response.json();
 
         setEmail(formEmail);
-        setPassword(formPassword);
-        setCreateToken(data["create"]);
-        setSendToken(data["send"]);
+        setToken(data["token"]);
       } else {
         const data = await response.json();
 
