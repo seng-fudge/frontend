@@ -4,6 +4,7 @@ import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
 import styles from "../styles/Authentication.module.css";
 import Loader from "../components/Loader";
+import { useRouter } from "next/router";
 
 export default function Signup() {
   const { email } = useContext(UserContext);
@@ -21,7 +22,8 @@ export default function Signup() {
 }
 
 function SignUpForm() {
-  const { setEmail, setPassword, setCreateToken, setSendToken } =
+
+  const { setEmail, setToken } =
     useContext(UserContext);
 
   const [formEmail, setFormEmail] = useState("");
@@ -32,6 +34,8 @@ function SignUpForm() {
   const [isValidPassword, setIsValidPassword] = useState(true);
 
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const onChangeEmail = (e) => {
     const val = e.target.value;
@@ -58,7 +62,7 @@ function SignUpForm() {
 
     try {
       const response = await fetch(
-        "https://authentication-seng2021.herokuapp.com/createUser",
+        "https://fudge-backend.herokuapp.com/auth/register",
         {
           method: "POST",
           headers: {
@@ -76,9 +80,9 @@ function SignUpForm() {
         const data = await response.json();
 
         setEmail(formEmail);
-        setPassword(formPassword);
-        setCreateToken(data["create"]);
-        setSendToken(data["send"]);
+        setToken(data['token']);
+        
+        router.push("/user")
       } else {
         const data = await response.json();
 

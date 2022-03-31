@@ -8,7 +8,7 @@ function MyApp({ Component, pageProps }) {
   const [createToken, setCreateToken] = useState(null);
   const [sendToken, setSendToken] = useState(null);
   const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [token, setToken] = useState(null);
 
   return (
     <UserContext.Provider
@@ -19,8 +19,8 @@ function MyApp({ Component, pageProps }) {
         setSendToken,
         email,
         setEmail,
-        password,
-        setPassword,
+        token,
+        setToken,
       }}
     >
       <NavBar />
