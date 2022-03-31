@@ -10,7 +10,7 @@ export default function Home() {
   const { email, password, sendToken, createToken } = useContext(UserContext);
 
   return email ? (
-    <div className="full gradient">
+    <main className="full gradient">
       <div className="split left">
         <Link href="/createInvoice" passHref>
           <button className="btn-outline-white centered extra-large">Create</button>
@@ -21,7 +21,7 @@ export default function Home() {
           <button className="btn-outline-white centered extra-large">Send</button>
         </Link>
       </div>
-    </div>
+    </main>
   ) : (
     <Link href="/signup" passHref>
       <button className="btn-gradient large centered">Signup</button>
