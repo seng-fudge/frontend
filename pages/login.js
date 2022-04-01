@@ -6,6 +6,7 @@ import styles from "../styles/Authentication.module.css";
 import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const { email } = useContext(UserContext);
@@ -23,13 +24,14 @@ export default function Login() {
 }
 
 function SigninForm() {
-  const { setCreateToken, setSendToken, setEmail, setPassword } =
-    useContext(UserContext);
+  const { setToken, setEmail } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
 
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
+
+  const router = useRouter();
 
   const onChangeEmail = (e) => {
     const val = e.target.value;
@@ -52,14 +54,13 @@ function SigninForm() {
 
     try {
       const response = await fetch(
-        "https://authentication-seng2021.herokuapp.com/collectToken",
+        "https://fudge-backend.herokuapp.com/auth/login",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            // your expected POST request payload goes here
             email: formEmail,
             password: formPassword,
           }),
@@ -70,9 +71,9 @@ function SigninForm() {
         const data = await response.json();
 
         setEmail(formEmail);
-        setPassword(formPassword);
-        setCreateToken(data["create"]);
-        setSendToken(data["send"]);
+        setToken(data["token"]);
+
+        router.push("/")
       } else {
         const data = await response.json();
 

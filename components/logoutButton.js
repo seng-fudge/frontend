@@ -2,33 +2,36 @@ import { useContext } from "react";
 import { UserContext } from "../lib/context";
 
 export default function LogoutButton() {
-  const { email, setEmail, password, setPassword } = useContext(UserContext);
+  const { email, setEmail, setToken} = useContext(UserContext);
 
   const resetLogin = async (e) => {
 
-    try {
-      const response = await fetch(
-        "https://authentication-seng2021.herokuapp.com/logout",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email,
-            password: password,
-          }),
-        }
-      );
-    } catch (error) {
-      // enter your logic for when there is an error (ex. error toast)
+    //TODO add implementatino for new api
+    
 
-      console.log(error);
-    }
+    // try {
+    //   const response = await fetch(
+    //     "https://authentication-seng2021.herokuapp.com/logout",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //       body: JSON.stringify({
+    //         email: email,
+    //         password: password,
+    //       }),
+    //     }
+    //   );
+    // } catch (error) {
+    //   // enter your logic for when there is an error (ex. error toast)
+
+    //   console.log(error);
+    // }
 
 
     setEmail(null);
-    setPassword(null);
+    setToken(null);
   }
 
   return (
