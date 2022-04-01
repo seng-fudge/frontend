@@ -41,6 +41,7 @@ function UserDisplay() {
           <UserData name="Contact name" value={contactName} />
           <UserData name="Electronic mail" value={electronicMail} />
           <UserData name="Supplier ID" value={supplierID} />
+          <h2 className="gradient-text">Address</h2>
           <UserData name="Street" value={street} />
           <UserData name="City" value={city} />
           <UserData name="Postcode" value={postcode} />
