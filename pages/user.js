@@ -1,55 +1,55 @@
-import Link from "next/link";
-import { useContext } from "react";
-import FormInput from "../components/FormInput";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../lib/context";
-import styles from "../styles/User.module.css";
+import LoginButton from "../components/LoginButton";
+import Loader from "../components/Loader";
+import UserData from "../components/UserData";
 
 export default function User() {
   const { email } = useContext(UserContext);
-  return (!email ? <LoginButton /> : <UserDetailForm />);
+  return !email ? <LoginButton /> : <UserDisplay />;
 }
 
-function LoginButton() {
+function UserDisplay() {
+  const [dataLoaded, setDataLoaded] = useState(false);
+
+  const [businessName, setBuisnessName] = useState("businessName");
+  const [contactName, setContactname] = useState("contactName");
+  const [electronicMail, setElectronicMail] = useState("electronicMail");
+  const [supplierID, setSupplierID] = useState(0);
+  const [street, setStreet] = useState("street");
+  const [city, setCity] = useState("city");
+  const [postcode, setPostcode] = useState(0);
+  const [country, setCountry] = useState("country");
+  const [currency, setCurrency] = useState("currency");
+
+  
+
+  useEffect( async (e) => {
+    //Put api call here
+    await new Promise(r => setTimeout(r, 1000));
+    setDataLoaded(true);
+  })
+  
+
   return (
-    <Link href="/login" passHref>
-      <button className="centered btn-gradient large">Log in</button>
-    </Link>
-  );
-}
+    <main onLoadStart={() => loadData()}>
+      {dataLoaded ? (
+        <>
+          <h1 className="title">User data</h1>
 
-function UserDetailForm() {
-
-  const onSubmit = async (e) => {
-    event.preventDefault();
-
-
-    const values = document.getElementById('form');
-
-    console.log(values.elements['businessName'].value);
-
-  }
-
-  return (
-    <main>
-      <h1 className="gradient-text">User details</h1>
-
-      <form id="form" onSubmit={() => onSubmit()}>
-        <FormInput id="businessName" name="Business name" />
-        <FormInput id="contactName" name="Contact name" />
-        <FormInput id="electronicMail" name="Email" />
-        <FormInput id="supplierID" name="Supplier id" number="true" />
-
-        <h2>Address</h2>
-        <FormInput id="street" name="Street" />
-        <FormInput id="city" name="City" />
-        <FormInput id="postcode" name="Postcode" number="true" />
-        <FormInput id="country" name="Country" />
-        <FormInput id="currency" name="Currency" />
-
-        <button className="btn-gradient" type="submit">
-          Update
-        </button>
-      </form>
+          <UserData name="Buisness name" value={businessName} />
+          <UserData name="Contact name" value={contactName} />
+          <UserData name="Electronic mail" value={electronicMail} />
+          <UserData name="Supplier ID" value={supplierID} />
+          <UserData name="Street" value={street} />
+          <UserData name="City" value={city} />
+          <UserData name="Postcode" value={postcode} />
+          <UserData name="Country" value={country} />
+          <UserData name="Currency" value={currency} />
+        </>
+      ) : (
+        <Loader />
+      )}
     </main>
   );
 }
