@@ -106,6 +106,7 @@ function SignUpForm() {
             value={formEmail}
             onChange={onChangeEmail}
             className={styles.input}
+            type="email"
           />
           {!isValidEmail ? <h4 className="red-text">Invalid email</h4> : <></>}
         </div>
