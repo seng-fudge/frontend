@@ -3,6 +3,7 @@ import { UserContext } from "../lib/context";
 import LoginButton from "../components/LoginButton";
 import Loader from "../components/Loader";
 import UserData from "../components/UserData";
+import Link from "next/link";
 
 export default function User() {
   const { email } = useContext(UserContext);
@@ -22,21 +23,17 @@ function UserDisplay() {
   const [country, setCountry] = useState("country");
   const [currency, setCurrency] = useState("currency");
 
-  
-
-  useEffect( async (e) => {
+  useEffect(async (e) => {
     //Put api call here
-    await new Promise(r => setTimeout(r, 1000));
+    await new Promise((r) => setTimeout(r, 1000));
     setDataLoaded(true);
-  })
-  
+  });
 
   return (
     <main onLoadStart={() => loadData()}>
+      <h1 className="title">User data</h1>
       {dataLoaded ? (
         <>
-          <h1 className="title">User data</h1>
-
           <UserData name="Buisness name" value={businessName} />
           <UserData name="Contact name" value={contactName} />
           <UserData name="Electronic mail" value={electronicMail} />
@@ -51,6 +48,9 @@ function UserDisplay() {
       ) : (
         <Loader />
       )}
+      <Link href="userdetails" passHref>
+        <button className="btn-gradient">Edit data</button>
+      </Link>
     </main>
   );
 }
