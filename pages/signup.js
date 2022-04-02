@@ -5,6 +5,7 @@ import { toast } from "react-hot-toast";
 import styles from "../styles/Authentication.module.css";
 import Loader from "../components/Loader";
 import { useRouter } from "next/router";
+import jsCookie from "js-cookie";
 
 export default function Signup() {
   const { email } = useContext(UserContext);
@@ -81,6 +82,9 @@ function SignUpForm() {
 
         setEmail(formEmail);
         setToken(data['token']);
+
+        jsCookie.set('email', formEmail, { expires: 1/24 })
+        jsCookie.set('token', data["token"], { expires: 1/24 })
         
         router.push("/user")
       } else {
