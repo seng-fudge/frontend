@@ -11,16 +11,9 @@ export default function Home() {
 
   return email ? (
     <main className="full gradient">
-      <div className="split left">
         <Link href="/createInvoice" passHref>
           <button className="btn-outline-white centered extra-large">Create</button>
         </Link>
-      </div>
-      <div className="split right">
-        <Link href="/sendInvoice" passHref>
-          <button className="btn-outline-white centered extra-large">Send</button>
-        </Link>
-      </div>
     </main>
   ) : (
     <Link href="/signup" passHref>
