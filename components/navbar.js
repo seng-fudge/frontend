@@ -24,10 +24,7 @@ export default function NavBar() {
         {email ? (<li><LogoutButton/></li>) : (<li><Link href="/login" passHref>
           <button className="btn-gradient">Login</button>
         </Link></li>)}
-        <li>
-      </li>
       </ul>
-      
     </nav>
   );
 }
