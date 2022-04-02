@@ -53,6 +53,8 @@ function UserDisplay() {
           setCountry(data['country']);
           setCurrency(data['currency']);
 
+          setHasData(true)
+
           // router.push("/user");
         }else if (response.status == 204){
           setHasData(false)
