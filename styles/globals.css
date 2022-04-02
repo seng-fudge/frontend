@@ -176,6 +176,11 @@ button.extra-large {
   left: 0;
 }
 
+.gap {
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
 /* Control the right side */
 .right {
   right: 0;

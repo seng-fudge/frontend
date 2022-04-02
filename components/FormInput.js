@@ -5,6 +5,6 @@ export default function FormInput({ type, id, name }) {
         <label className={styles.label}>
             {name}
         </label>
-        <input type={type} className={styles.input} id={id} name={id} placeholder={name} />
+        <input type={type} className={styles.input} id={id} name={id} placeholder={name} required/>
     </div>;
 }

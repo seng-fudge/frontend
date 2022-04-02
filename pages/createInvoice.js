@@ -19,7 +19,6 @@ function InvoiceCreationForm() {
 
   const [loading, setLoading] = useState(false);
 
-
   const onSubmit = async (e) => {
     event.preventDefault();
 
@@ -127,12 +126,10 @@ function InvoiceCreationForm() {
       <div>
       <form onSubmit={() => onSubmit()}>
 
-        <div className="split left">
-            
-            <FormInput id="formBuyerReference" name="Buyer reference" type="text" />
+        <div className="split left gap" >
 
             <h1 className="gradient-text">Customer Details</h1>
-
+            <FormInput id="formBuyerReference" name="Buyer reference" type="text" />
             <FormInput id="formCustomerContactName" name="Customer Name" type="text" />
             <FormInput id="formCustomerRegistration" name="Registered Business Name" type="text" />
             <FormInput id="formCustomerEmail" name="Email" type="email" />
@@ -144,7 +141,7 @@ function InvoiceCreationForm() {
             
         </div>
 
-        <div className="split right">
+        <div className="split right gap">
             <h1 className="gradient-text">Payment Details</h1>
             <FormInput id="formPaymentType" name="Payment Type" type="number" />
         

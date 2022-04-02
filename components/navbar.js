@@ -25,11 +25,6 @@ export default function NavBar() {
           <button className="btn-gradient">Login</button>
         </Link></li>)}
         <li>
-          <Link href="/createInvoice" passhref>
-              <button className="btn-gradient">
-                  Create invoice
-              </button>
-          </Link>
       </li>
       </ul>
       
