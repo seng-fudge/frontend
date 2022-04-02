@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import Loader from "../components/Loader";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import jsCookie from "js-cookie";
 
 export default function Login() {
   const { email } = useContext(UserContext);
@@ -70,8 +71,13 @@ function SigninForm() {
       if (response.ok) {
         const data = await response.json();
 
+        
+        jsCookie.set('email', formEmail, { expires: 1/24 })
+        jsCookie.set('token', data["token"], { expires: 1/24 })
+
         setEmail(formEmail);
         setToken(data["token"]);
+
 
         router.push("/")
       } else {
