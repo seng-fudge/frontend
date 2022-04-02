@@ -71,11 +71,13 @@ function SigninForm() {
       if (response.ok) {
         const data = await response.json();
 
+        
+        jsCookie.set('email', formEmail, { expires: 1/24 })
+        jsCookie.set('token', data["token"], { expires: 1/24 })
+
         setEmail(formEmail);
         setToken(data["token"]);
 
-        jsCookie.set('email', formEmail, { expires: 1/24 })
-        jsCookie.set('token', data["token"], { expires: 1/24 })
 
         router.push("/")
       } else {

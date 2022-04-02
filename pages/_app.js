@@ -37,6 +37,7 @@ export default MyApp;
 function loadCookie(name){
   let cookieValue = jsCookie.get(name)
   if (cookieValue){
+    console.log("Loading cookie");
     return cookieValue;
   }
   return null;
