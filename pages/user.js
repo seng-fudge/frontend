@@ -28,6 +28,7 @@ function UserDisplay() {
 
   useEffect(() => {
     async function fetchData(){
+      setDataLoaded(false)
       try {
         const response = await fetch(
           "https://fudge-backend.herokuapp.com/user/data",
@@ -73,7 +74,7 @@ function UserDisplay() {
     setDataLoaded(true)
 
   }
-  , []);
+  , [token]);
 
   return (
     <main onLoadStart={() => loadData()}>
