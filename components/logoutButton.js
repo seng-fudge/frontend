@@ -1,3 +1,4 @@
+import jsCookie from "js-cookie";
 import { useContext } from "react";
 import { UserContext } from "../lib/context";
 
@@ -32,6 +33,10 @@ export default function LogoutButton() {
 
     setEmail(null);
     setToken(null);
+
+    //Delete cookies
+    jsCookie.remove("email")
+    jsCookie.remove("token")
   }
 
   return (
