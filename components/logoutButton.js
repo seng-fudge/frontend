@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UserContext } from "../lib/context";
 
 export default function LogoutButton() {
-  const { email, setEmail, setToken} = useContext(UserContext);
+  const { email, setEmail, setToken, setSendToken} = useContext(UserContext);
 
   const resetLogin = async (e) => {
 
@@ -33,10 +33,12 @@ export default function LogoutButton() {
 
     setEmail(null);
     setToken(null);
+    setSendToken(null);
 
     //Delete cookies
     jsCookie.remove("email")
     jsCookie.remove("token")
+    jsCookie.remove("sendToken")
   }
 
   return (

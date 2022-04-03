@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import styles from "../styles/Authentication.module.css";
 import Loader from "../components/Loader";
 import FormInput from "../components/FormInput";
+import { useRouter } from "next/router";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -12,9 +13,11 @@ export default function CreateInvoice() {
 }
 
 function InvoiceCreationForm() {
-  const { token } = useContext(UserContext);
+  const { token, setXml } = useContext(UserContext);
 
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   const onSubmit = async (e) => {
     event.preventDefault();
@@ -58,7 +61,7 @@ function InvoiceCreationForm() {
       console.log(error);
     }
 
-    console.log("got userdata")
+    console.log("got userdata");
 
     //send creation request
     if (success == true) {
@@ -69,9 +72,9 @@ function InvoiceCreationForm() {
 
       today = mm + "/" + dd + "/" + yyyy;
 
-      // try {
+      try {
         const response = await fetch(
-          // "https://seng-test.azurewebsites.net/json/convert",
+          "http://seng-donut-frontend.azurewebsites.net/json/convert",
           {
             method: "POST",
             headers: {
@@ -95,12 +98,12 @@ function InvoiceCreationForm() {
               AddDocReference: "ebwasp1002",
 
               // details from sign up
-              SupplierID: data['supplierID'],
-              SupplierStreet: data['street'],
-              SupplierCity: data['city'],
-              SupplierPost: data['postcode'],
-              SupplierCountry: data['country'],
-              SupplierRegistration: data['businessName'],
+              SupplierID: data["supplierID"],
+              SupplierStreet: data["street"],
+              SupplierCity: data["city"],
+              SupplierPost: data["postcode"],
+              SupplierCountry: data["country"],
+              SupplierRegistration: data["businessName"],
 
               // details from create form
 
@@ -134,46 +137,51 @@ function InvoiceCreationForm() {
                 values.elements["formTaxExclusiveAmount"].value,
               TaxInclusiveAmount:
                 values.elements["formTaxExclusiveAmount"].value,
-                // values.elements["formTaxAmount"].value,
+              // values.elements["formTaxAmount"].value,
               PayableRoundingAmount:
                 values.elements["formPayableRoundingAmount"].value,
-              PayableAmount:
-                values.elements["formTaxExclusiveAmount"].value ,
-                // values.elements["formTaxAmount"].value +
-                // values.elements["formPayableRoundingAmount"].value,
+              PayableAmount: values.elements["formTaxExclusiveAmount"].value,
+              // values.elements["formTaxAmount"].value +
+              // values.elements["formPayableRoundingAmount"].value,
 
               // invoice item details
               InvoiceID: values.elements["formInvoiceID"].value,
               InvoiceQuantity: values.elements["formInvoiceQuantity"].value,
-              InvoiceLineExtension: values.elements["formInvoiceLineExtension"].value,
+              InvoiceLineExtension:
+                values.elements["formInvoiceLineExtension"].value,
               InvoiceName: values.elements["formInvoiceName"].value,
               InvoiceTaxID: values.elements["formInvoiceTaxID"].value,
               InvoiceTaxPercent: values.elements["formInvoiceTaxPercent"].value,
-              InvoiceTaxSchemeID: values.elements["formInvoiceTaxSchemeID"].value,
-              InvoicePriceAmount: values.elements["formInvoicePriceAmount"].value,
-              InvoiceBaseQuantity: values.elements["formInvoiceBaseQuantity"].value,
+              InvoiceTaxSchemeID:
+                values.elements["formInvoiceTaxSchemeID"].value,
+              InvoicePriceAmount:
+                values.elements["formInvoicePriceAmount"].value,
+              InvoiceBaseQuantity:
+                values.elements["formInvoiceBaseQuantity"].value,
             }),
           }
         );
 
-        console.log("created")
-        
-        console.log(response.status)
+        console.log("created");
+
+        console.log(response.status);
 
         if (response.ok) {
-          const data = await response.json();
+          const data = await response.text();
 
-          console.log(data);
+          setXml(data);
+
+          router.push("/sendInvoice");
         } else {
           const data = await response.json();
 
-          console.log(data)
+          console.log(data);
         }
-      // } catch (error) {
-      //   // enter your logic for when there is an error (ex. error toast)
+      } catch (error) {
+        // enter your logic for when there is an error (ex. error toast)
 
-      //   console.log(error);
-      // }
+        console.log(error);
+      }
     }
 
     setLoading(false);
