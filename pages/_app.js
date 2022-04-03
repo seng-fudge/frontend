@@ -6,7 +6,6 @@ import "../styles/globals.css";
 import jsCookie from "js-cookie";
 
 function MyApp({ Component, pageProps }) {
-
   const [sendToken, setSendToken] = useState(null);
   const [email, setEmail] = useState(null);
   const [token, setToken] = useState(null);
@@ -15,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     setSendToken(loadCookie("sendToken"));
     setEmail(loadCookie("email"));
-    setToken(loadCookie("token"))
+    setToken(loadCookie("token"));
   }, []);
 
   return (
@@ -28,21 +27,21 @@ function MyApp({ Component, pageProps }) {
         token,
         setToken,
         xml,
-        setXml
+        setXml,
       }}
     >
       <NavBar />
       <Component {...pageProps} />
-      <Toaster/>
+      <Toaster />
     </UserContext.Provider>
   );
 }
 
 export default MyApp;
 
-function loadCookie(name){
-  let cookieValue = jsCookie.get(name)
-  if (cookieValue){
+function loadCookie(name) {
+  let cookieValue = jsCookie.get(name);
+  if (cookieValue) {
     console.log("Loading cookie");
     return cookieValue;
   }
