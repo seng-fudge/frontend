@@ -64,15 +64,10 @@ function SendForm() {
     }
   };
 
-  const checkXml = () => {
-    console.log(xml);
-  }
-
   return (
     <section className="centered">
       <h1 className="white-title">Confirmation</h1>
       <button onClick={() => sendForm()}>Send invoice</button>
-      <button onClick={() => checkXml()}>Check xml</button>
     </section>
   );
 }
