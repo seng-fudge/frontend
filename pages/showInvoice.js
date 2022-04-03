@@ -28,11 +28,15 @@ function DisplayInvoice({ xml }) {
 
   useEffect(() => {
     async function fetchData() {
+      console.log(xml);
       try {
         const response = await fetch(
           "https://authentication-seng2021.herokuapp.com/test",
           {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
               xml: xml,
             }),

@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../lib/context";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { useRouter } from "next/router";
 
 export default function SendInvoice() {
   const { email, xml } = useContext(UserContext);
@@ -20,17 +21,24 @@ export default function SendInvoice() {
 function SendForm() {
   const { sendToken, setSendToken, token, xml } = useContext(UserContext);
 
+  const router = useRouter();
+
   const sendForm = async (e) => {
     // Add check to find token if token expired
+
+    var sendTokenCurr = sendToken;
+
     if (!sendToken) {
       var newSendToken = await getSendToken(token);
+      console.log("New token is " + newSendToken);
       setSendToken(newSendToken);
+      sendTokenCurr = newSendToken;
     }
+    
+    if (sendTokenCurr) {
 
-    console.log("Got token");
-    console.log(sendToken)
+      console.log("Token being used: " + sendTokenCurr);
 
-    if (sendToken) {
       try {
         const response = await fetch(
           "https://fudge2021.herokuapp.com/invoice/extract_and_send/v2",
@@ -38,7 +46,7 @@ function SendForm() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "token": sendToken,
+              "token": sendTokenCurr,
             },
             body: JSON.stringify({
               file: xml,
