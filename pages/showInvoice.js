@@ -5,7 +5,7 @@ import LoginButton from "../components/LoginButton";
 import toast from "react-hot-toast";
 import Link from "next/link";
 
-export default function showInvoice() {
+export default function ShowInvoice() {
   const { email, xml } = useContext(UserContext);
 
   return email ? (
@@ -62,12 +62,12 @@ function DisplayInvoice({ xml }) {
       }
     }
     fetchData();
-  }, []);
+  }, [xml]);
 
   return (
     <>
       <iframe className={styles.showpage} srcDoc={htmlValue}></iframe>
-      <Link href="/sendInvoice" passhred>
+      <Link href="/sendInvoice" passHref>
         <button className="btn-gradient">Send</button>
       </Link>
     </>
