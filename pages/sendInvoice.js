@@ -10,7 +10,7 @@ export default function SendInvoice() {
 
   return email ? (
     <main className="full gradient">
-      (xml ? <SendForm /> : <h1>Please create an invoice first</h1>)
+      {xml ? <SendForm /> : <h1>Please create an invoice first</h1>}
     </main>
   ) : (
     <LoginButton />
