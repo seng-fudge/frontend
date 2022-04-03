@@ -29,19 +29,13 @@ function DisplayInvoice({ xml }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const formData = new FormData();
-
-        formData.append(
-          "xml",
-          new Blob([xml], { type: "text/xml" }),
-          "invoice.xml"
-        );
-
         const response = await fetch(
-          "https://www.invoicerendering.com/einvoices?renderType=html",
+          "https://authentication-seng2021.herokuapp.com/test",
           {
             method: "POST",
-            body: formData,
+            body: JSON.stringify({
+              xml: xml,
+            }),
           }
         );
 

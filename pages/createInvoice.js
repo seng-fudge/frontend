@@ -5,11 +5,12 @@ import styles from "../styles/Authentication.module.css";
 import Loader from "../components/Loader";
 import FormInput from "../components/FormInput";
 import { useRouter } from "next/router";
+import LoginButton from "../components/LoginButton";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
 
-  return <>{<InvoiceCreationForm />}</>;
+  return  email ? <InvoiceCreationForm /> : <LoginButton/>;
 }
 
 function InvoiceCreationForm() {
