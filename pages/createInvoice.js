@@ -49,7 +49,7 @@ function InvoiceCreationForm() {
 
         // router.push("/user");
       } else if (response.status == 204) {
-        setHasData(false);
+        toast.error("You must enter user details before creating an invoice")
       } else {
         data = await response.json();
 
