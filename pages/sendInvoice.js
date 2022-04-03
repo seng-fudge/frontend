@@ -75,7 +75,7 @@ function SendForm() {
   return (
     <section className="centered">
       <h1 className="white-title">Confirmation</h1>
-      <button onClick={() => sendForm()}>Send invoice</button>
+      <button className="btn-white" onClick={() => sendForm()}>Send invoice</button>
     </section>
   );
 }
