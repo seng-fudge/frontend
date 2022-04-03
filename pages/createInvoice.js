@@ -99,6 +99,9 @@ function InvoiceCreationForm() {
 
               // details from sign up
               SupplierID: data["supplierID"],
+              SupplierPartyName: data['businessName'],
+              SupplierContactName: data['contactName'],
+              SupplierEmail: data['electronicMail'],
               SupplierStreet: data["street"],
               SupplierCity: data["city"],
               SupplierPost: data["postcode"],
@@ -120,6 +123,7 @@ function InvoiceCreationForm() {
                 values.elements["formCustomerContactName"].value,
 
               // payment details
+              DueDate: values.elements["formDueDate"].value,
               PaymentType: values.elements["formPaymentType"].value,
               PaymentID: values.elements["formPaymentID"].value,
               PaymentTerms: values.elements["formPaymentTerms"].value,
@@ -228,6 +232,7 @@ function InvoiceCreationForm() {
 
           <div className="split right gap">
             <h1 className="gradient-text">Payment Details</h1>
+            <FormInput id="formDueDate" name="Due date" type="text"/>
             <FormInput id="formPaymentType" name="Payment Type" type="number" />
 
             <FormInput id="formPaymentID" name="Payment ID" type="number" />
