@@ -5,11 +5,11 @@ import { UserContext } from "../lib/context";
 import Link from "next/link";
 
 export default function SendInvoice() {
-  const { email } = useContext(UserContext);
+  const { email, xml } = useContext(UserContext);
 
   return email ? (
     <main className="full gradient">
-      <SendForm />
+      (xml ? <SendForm /> : <h1>Please create an invoice first</h1>)
     </main>
   ) : (
     <LoginButton />
@@ -20,36 +20,20 @@ function SendForm() {
   const [sendEmail, setSendEmail] = useState("");
   const [validEmail, setValidEmail] = useState(true);
 
-  const onChangeEmail = (e) => {
-    const val = e.target.value;
-
-    setSendEmail(val);
-
-    setValidEmail(ValidateEmail(val));
+  const onChangeEmail = async (e) => {
+    
   };
 
-  const onSubmit = (e) => {
+  const sendForm = (e) => {
     event.preventDefault();
 
-    console.log(sendEmail)
-  }
+    console.log(sendEmail);
+  };
 
   return (
     <section className="centered">
       <h1 className="white-title">Confirmation</h1>
-      <form onSubmit={() => onSubmit()}>
-        <input
-          name="email"
-          placeholder="email"
-          value={sendEmail}
-          onChange={onChangeEmail}
-          className={styles.input}
-        />
-        {!validEmail ? <h4 className="red-text">Invalid email</h4> : <></>}
-        <button type="submit" className="btn-white large" disabled = {!sendEmail || !validEmail}>
-          Send
-        </button>
-      </form>
+      <button onClick={() => sendForm}>Send invoice</button>
     </section>
   );
 }
