@@ -6,12 +6,12 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 
 export default function ShowInvoice() {
-  const { email, xml } = useContext(UserContext);
+  const { email, xml, token } = useContext(UserContext);
 
   return email ? (
     <main>
       {xml ? (
-        <DisplayInvoice xml={xml} />
+        <DisplayInvoice xml={xml} token={token} />
       ) : (
         <h1>Please create an invoice first</h1>
       )}
@@ -21,7 +21,7 @@ export default function ShowInvoice() {
   );
 }
 
-function DisplayInvoice({ xml }) {
+function DisplayInvoice({ xml, token }) {
   const [htmlValue, setHtmlValue] = useState(
     `<html><main>Loading</main></html>`
   );
@@ -31,12 +31,13 @@ function DisplayInvoice({ xml }) {
       console.log(xml);
       try {
         const response = await fetch(
-          "https://authentication-seng2021.herokuapp.com/test",
+          "https://fudge-backend.herokuapp.com/apis/render_forward",
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: new Headers({
+              'Content-Type': 'application/json',
+              'token': token
+            }), 
             body: JSON.stringify({
               xml: xml,
             }),
@@ -60,7 +61,7 @@ function DisplayInvoice({ xml }) {
       }
     }
     fetchData();
-  }, [xml]);
+  }, [xml, token]);
 
   return (
     <>
