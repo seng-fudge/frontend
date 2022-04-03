@@ -171,7 +171,7 @@ function InvoiceCreationForm() {
 
           setXml(data);
 
-          router.push("/sendInvoice");
+          router.push("/showInvoice");
         } else {
           const data = await response.json();
 
