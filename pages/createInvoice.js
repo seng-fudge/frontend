@@ -75,7 +75,7 @@ function InvoiceCreationForm() {
 
       try {
         const response = await fetch(
-          "http://seng-donut-frontend.azurewebsites.net/json/convert",
+          "https://seng-donut-deployment.herokuapp.com/json/convert",
           {
             method: "POST",
             headers: {
