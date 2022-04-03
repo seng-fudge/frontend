@@ -39,11 +39,14 @@ export default function LogoutButton() {
     jsCookie.remove("email")
     jsCookie.remove("token")
     jsCookie.remove("sendToken")
+
+
+    //Add logout from backend function
   }
 
   return (
     <button className="btn-red" onClick={() => resetLogin()}>
-      Logout of {email}
+      Logout
     </button>
   );
 }
