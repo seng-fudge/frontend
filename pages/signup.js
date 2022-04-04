@@ -86,7 +86,7 @@ function SignUpForm() {
         setEmail(formEmail);
         setToken(data['token']);
         
-        router.push("/user")
+        router.push("/userdetails")
       } else {
         const data = await response.json();
 
