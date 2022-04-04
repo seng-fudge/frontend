@@ -141,13 +141,13 @@ function InvoiceCreationForm() {
               TaxExclusiveAmount:
                 values.elements["formTaxExclusiveAmount"].value,
               TaxInclusiveAmount:
-                values.elements["formTaxExclusiveAmount"].value,
-              // values.elements["formTaxAmount"].value,
+                values.elements["formTaxExclusiveAmount"].value +
+              values.elements["formTaxAmount"].value,
               PayableRoundingAmount:
                 values.elements["formPayableRoundingAmount"].value,
-              PayableAmount: values.elements["formTaxExclusiveAmount"].value,
-              // values.elements["formTaxAmount"].value +
-              // values.elements["formPayableRoundingAmount"].value,
+              PayableAmount: values.elements["formTaxExclusiveAmount"].value +
+              values.elements["formTaxAmount"].value +
+              values.elements["formPayableRoundingAmount"].value,
 
               // invoice item details
               InvoiceID: values.elements["formInvoiceID"].value,
