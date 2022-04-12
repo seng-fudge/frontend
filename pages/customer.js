@@ -11,6 +11,11 @@ export default function Customer() {
   return email ? <CustomerCreate /> : <LoginButton />;
 }
 
+/*
+TODO
+- Add saving when done
+*/
+
 function CustomerCreate() {
 
   const {token} = useContext(UserContext);
