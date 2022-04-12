@@ -98,7 +98,7 @@ function SigninForm() {
     <Loader />
   ) : (
     <section>
-      <h2 className="title">Sign in</h2>
+      <h2 className="title large">Sign in</h2>
       <form onSubmit={() => onSubmit()}>
         <input
           name="email"
