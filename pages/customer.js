@@ -4,6 +4,7 @@ import { UserContext } from "../lib/context";
 import LoginButton from "../components/LoginButton";
 import FormInput from "../components/FormInput";
 import Loader from "../components/Loader";
+import jsCookie from "js-cookie";
 
 export default function Customer() {
   const { email } = useContext(UserContext);
@@ -18,7 +19,7 @@ TODO
 
 function CustomerCreate() {
 
-  const {token} = useContext(UserContext);
+  const {token, setCustomer} = useContext(UserContext);
 
   const [pastCustomers, setPastCustomers] = useState([]);
 
@@ -27,6 +28,24 @@ function CustomerCreate() {
     event.preventDefault();
 
     const values = document.getElementById("form");
+
+    const newCustomer = {
+      buyerReference: values.elements["formBuyerReference"].value,
+      customerName:
+          values.elements["formCustomerContactName"].value,
+      businessName:
+          values.elements["formCustomerRegistration"].value,
+      email: values.elements["formCustomerEmail"].value,
+      streetAddress: values.elements["formCustomerStreet"].value,
+      additionalStreetAddress: values.elements["formCustomerAddStreet"].value,
+      city: values.elements["formCustomerCity"].value,
+      postcode: values.elements["formCustomerPost"].value,
+      country: values.elements["formCustomerCountry"].value,
+    }
+
+    setCustomer(newCustomer)
+
+    jsCookie.set('customer', newCustomer, { expires: 1/24 })
 
     try{
       const response = await fetch(
@@ -37,19 +56,7 @@ function CustomerCreate() {
             "Content-Type": "application/json",
             'token': token
           }),
-          body: JSON.stringify({
-            buyerReference: values.elements["formBuyerReference"].value,
-            customerName:
-                values.elements["formCustomerContactName"].value,
-            businessName:
-                values.elements["formCustomerRegistration"].value,
-            email: values.elements["formCustomerEmail"].value,
-            streetAddress: values.elements["formCustomerStreet"].value,
-            additionalStreetAddress: values.elements["formCustomerAddStreet"].value,
-            city: values.elements["formCustomerCity"].value,
-            postcode: values.elements["formCustomerPost"].value,
-            country: values.elements["formCustomerCountry"].value,
-          })
+          body: JSON.stringify(newCustomer)
         }
       )
 
@@ -104,6 +111,8 @@ function CustomerCreate() {
   
         console.log(error);
       }
+
+      //To move to next page
     }
     fetchData()
   }, []);
@@ -175,9 +184,12 @@ function DisplayCustomers({customers}){
 function CustomerForm({customer}){
 
 
+  const {setCustomer} = useContext(UserContext)
+
   const onSelect = () => {
-    console.log(customer);
-    //Add code to save customer and move to next page
+    setCustomer(customer)
+
+    jsCookie.set('customer', customer, { expires: 1/24 })
   }
 
   return <div className="pointer" onClick={() => {onSelect()}} >
