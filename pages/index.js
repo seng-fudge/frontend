@@ -7,13 +7,18 @@ import { UserContext } from "../lib/context";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const { email, password, sendToken, createToken } = useContext(UserContext);
+  const { email, password, sendToken, createToken, customer } = useContext(UserContext);
 
   return email ? (
     <main className="full gradient">
         <Link href="/createInvoice" passHref>
           <button className="btn-outline-white centered extra-large">Create</button>
         </Link>
+        <button onClick={() => {
+          console.log(customer);
+        }}>
+          test
+        </button>
     </main>
   ) : (
     <Link href="/signup" passHref>

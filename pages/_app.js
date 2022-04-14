@@ -10,11 +10,13 @@ function MyApp({ Component, pageProps }) {
   const [email, setEmail] = useState(null);
   const [token, setToken] = useState(null);
   const [xml, setXml] = useState(null);
+  const [customer, setCustomer] = useState(null);
 
   useEffect(() => {
     setSendToken(loadCookie("sendToken"));
     setEmail(loadCookie("email"));
     setToken(loadCookie("token"));
+    setCustomer(loadCookie("customer"));
   }, []);
 
   return (
@@ -28,6 +30,8 @@ function MyApp({ Component, pageProps }) {
         setToken,
         xml,
         setXml,
+        customer,
+        setCustomer,
       }}
     >
       <NavBar />
