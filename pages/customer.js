@@ -115,7 +115,7 @@ function CustomerCreate() {
       //To move to next page
     }
     fetchData()
-  }, []);
+  }, [token]);
 
 
   return (
@@ -176,7 +176,7 @@ function DisplayCustomers({customers}){
 
   return <div className="gap">
     <h1 className="white">Previous customers</h1>
-    {customers.map(e => <CustomerForm customer={e}/>)}
+    {customers.map(e => <CustomerForm customer={e} key={e['customerName']}/>)}
   </div>
 
 }
