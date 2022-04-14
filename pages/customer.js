@@ -67,7 +67,9 @@ function CustomerCreate() {
       if (response.ok) {
         const data = await response.text();
 
-        console.log(data);
+        setCustomer(newCustomer);
+
+        jsCookie.set("customer", newCustomer, { expires: 1 / 24 });
 
       } else {
         const data = await response.json();
