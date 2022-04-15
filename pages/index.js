@@ -11,7 +11,7 @@ export default function Home() {
 
   return email ? (
     <main className="full gradient">
-        <Link href="/createInvoice" passHref>
+        <Link href="/createInvoice/customerDetails" passHref>
           <button className="btn-outline-white centered extra-large">Create</button>
         </Link>
         <button onClick={() => {
