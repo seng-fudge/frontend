@@ -77,6 +77,12 @@ function SendForm() {
   const sendPdf = async (e) => {
     // Add check to find token if token expired
 
+    if (!sendToken) {
+      var newSendToken = await getSendToken(token);
+      console.log("New token is " + newSendToken);
+      setSendToken(newSendToken);
+    }
+
     try {
       const response = await fetch(
         "https://fudge-backend.herokuapp.com/apis/email_pdf",
