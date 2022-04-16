@@ -1,0 +1,14 @@
+.invoice{
+    background-color: white;
+    margin: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 15px;
+    border-radius: 20px;
+    column-count: 2;
+}
+
+.subtitle{
+    margin-top: 5px;
+    margin-bottom: 2px;
+}

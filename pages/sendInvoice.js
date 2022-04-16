@@ -39,6 +39,8 @@ function SendForm() {
       sendTokenCurr = newSendToken;
     }
 
+    await saveXml(xml, token);
+
     if (sendTokenCurr) {
       console.log("Token being used: " + sendTokenCurr);
 
@@ -82,6 +84,8 @@ function SendForm() {
       console.log("New token is " + newSendToken);
       setSendToken(newSendToken);
     }
+
+    await saveXml(xml, token);
 
     try {
       const response = await fetch(
@@ -164,4 +168,31 @@ async function getSendToken(token) {
   }
 
   return null;
+}
+
+async function saveXml(xml, token){
+  try {
+    const response = await fetch(
+      "https://fudge-backend.herokuapp.com/user/sent_invoice",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+        body: JSON.stringify({
+          xml: xml
+        })
+      }
+    );
+
+    if (response.ok) {
+      console.log("Send xml");
+      
+    } else {
+      toast.error("Invoice not saved");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }
