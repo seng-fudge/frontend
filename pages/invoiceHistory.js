@@ -58,13 +58,20 @@ function HistoryTitle({ token }) {
 }
 
 function DisplayHistory({ history }) {
-  return (
-    <div>
-      {history.map((e) => (
-        <DisplayInvoice invoice={e} key={e["time"]} />
-      ))}
-    </div>
-  );
+
+  if (history.length > 0){
+    return (
+      <div>
+        {history.map((e) => (
+          <DisplayInvoice invoice={e} key={e["time"]} />
+        ))}
+      </div>
+    );
+  } else {
+    <h4 className="white">No invoices sent</h4>
+  }
+
+  
 }
 
 function DisplayInvoice({ invoice }) {
