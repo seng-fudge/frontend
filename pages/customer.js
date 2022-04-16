@@ -67,8 +67,6 @@ function CustomerCreate() {
       if (response.ok) {
         const data = await response.text();
 
-        console.log(data);
-
       } else {
         const data = await response.json();
 

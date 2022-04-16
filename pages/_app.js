@@ -11,12 +11,14 @@ function MyApp({ Component, pageProps }) {
   const [token, setToken] = useState(null);
   const [xml, setXml] = useState(null);
   const [customer, setCustomer] = useState(null);
+  const [payment, setPayment] = useState(null);
 
   useEffect(() => {
     setSendToken(loadCookie("sendToken"));
     setEmail(loadCookie("email"));
     setToken(loadCookie("token"));
     setCustomer(loadCookie("customer"));
+    setPayment(loadCookie("payment"));
   }, []);
 
   return (
@@ -32,6 +34,8 @@ function MyApp({ Component, pageProps }) {
         setXml,
         customer,
         setCustomer,
+        payment,
+        setPayment
       }}
     >
       <NavBar />
