@@ -242,6 +242,11 @@ button.extra-large {
   line-height: 92px;
 }
 
+.raise-content {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
 .title {
   font-family: "Ubuntu";
   font-style: normal;
