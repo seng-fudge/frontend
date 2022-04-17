@@ -229,6 +229,10 @@ button.extra-large {
   text-align: center;
 }
 
+.shiftDown {
+    top: 70px;
+}
+
 .white{
   color: white;
 }

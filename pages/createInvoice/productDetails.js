@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
 import LoginButton from "../../components/LoginButton";
+import ProgressBar from "./progressBar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -197,6 +198,7 @@ function InvoiceCreationForm() {
   ) : (
     <body>
       <div className="centered">
+        <ProgressBar />
         <form id="form" onSubmit={() => onSubmit()}>
             <h1 className="gradient-text">Payment Details</h1>
             <FormInput id="formDueDate" name="Due date" type="text"/>

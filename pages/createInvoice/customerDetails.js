@@ -6,6 +6,7 @@ import Loader from "../../components/Loader";
 import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
 import LoginButton from "../../components/LoginButton";
+import ProgressBar from "./progressBar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -233,6 +234,7 @@ function InvoiceCreationForm() {
               Create Invoice
             </button>
         </form>
+        <ProgressBar />
       </div>
     </body>
   );

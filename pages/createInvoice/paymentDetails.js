@@ -1,11 +1,12 @@
-import { UserContext } from "../lib/context";
+import { UserContext } from "../../lib/context";
 import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import styles from "../styles/Authentication.module.css";
-import Loader from "../components/Loader";
-import FormInput from "../components/FormInput";
+import styles from "../../styles/Authentication.module.css";
+import Loader from "../../components/Loader";
+import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
-import LoginButton from "../components/LoginButton";
+import LoginButton from "../../components/LoginButton";
+import ProgressBar from "./progressBar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -197,6 +198,7 @@ function InvoiceCreationForm() {
   ) : (
     <body>
       <div>
+      <ProgressBar />
         <form id="form" onSubmit={() => onSubmit()}>
           <div className="split left gap">
             <h1 className="gradient-text">Customer Details</h1>
