@@ -11,7 +11,11 @@ export default function SendInvoice() {
 
   return email ? (
     <main className="full gradient">
-      {xml ? <SendForm /> : <h1>Please create an invoice first</h1>}
+      {xml ? (
+        <SendForm />
+      ) : (
+        <h1 className="centered">Please create an invoice first</h1>
+      )}
     </main>
   ) : (
     <LoginButton />
@@ -23,7 +27,7 @@ function SendForm() {
 
   const router = useRouter();
 
-  const sendForm = async (e) => {
+  const sendXml = async (e) => {
     // Add check to find token if token expired
 
     var sendTokenCurr = sendToken;
@@ -34,9 +38,10 @@ function SendForm() {
       setSendToken(newSendToken);
       sendTokenCurr = newSendToken;
     }
-    
-    if (sendTokenCurr) {
 
+    await saveXml(xml, token);
+
+    if (sendTokenCurr) {
       console.log("Token being used: " + sendTokenCurr);
 
       try {
@@ -46,7 +51,7 @@ function SendForm() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "token": sendTokenCurr,
+              token: sendTokenCurr,
             },
             body: JSON.stringify({
               file: xml,
@@ -55,8 +60,7 @@ function SendForm() {
         );
 
         if (response.ok) {
-          
-          toast.success("Invoice send")
+          toast.success("Invoice send");
 
           router.push("/");
         } else {
@@ -72,10 +76,57 @@ function SendForm() {
     }
   };
 
+  const sendPdf = async (e) => {
+    // Add check to find token if token expired
+
+    if (!sendToken) {
+      var newSendToken = await getSendToken(token);
+      console.log("New token is " + newSendToken);
+      setSendToken(newSendToken);
+    }
+
+    await saveXml(xml, token);
+
+    try {
+      const response = await fetch(
+        "https://fudge-backend.herokuapp.com/apis/email_pdf",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "token": token,
+          },
+          body: JSON.stringify({
+            xml: xml,
+          }),
+        }
+      );
+
+      if (response.ok) {
+        toast.success("Invoice send");
+
+        router.push("/");
+      } else {
+        const data = await response.json();
+
+        toast.error(data["message"]);
+      }
+    } catch (error) {
+      // enter your logic for when there is an error (ex. error toast)
+
+      console.log(error);
+    }
+  };
+
   return (
     <section className="centered">
       <h1 className="white-title">Confirmation</h1>
-      <button className="btn-white" onClick={() => sendForm()}>Send invoice</button>
+      <button className="btn-white" onClick={() => sendXml()}>
+        Send xml
+      </button>
+      <button className="btn-white" onClick={() => sendPdf()}>
+        Send pdf
+      </button>
     </section>
   );
 }
@@ -103,8 +154,8 @@ async function getSendToken(token) {
 
     if (response.ok) {
       const data = await response.json();
-      
-      return data['send_token']
+
+      return data["send_token"];
     } else {
       const data = await response.json();
 
@@ -117,4 +168,31 @@ async function getSendToken(token) {
   }
 
   return null;
+}
+
+async function saveXml(xml, token){
+  try {
+    const response = await fetch(
+      "https://fudge-backend.herokuapp.com/user/sent_invoice",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token: token,
+        },
+        body: JSON.stringify({
+          xml: xml
+        })
+      }
+    );
+
+    if (response.ok) {
+      console.log("Send xml");
+      
+    } else {
+      toast.error("Invoice not saved");
+    }
+  } catch (error) {
+    console.log(error);
+  }
 }

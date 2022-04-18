@@ -14,11 +14,6 @@ export default function Home() {
         <Link href="/createInvoice/customerDetails" passHref>
           <button className="btn-outline-white centered extra-large">Create</button>
         </Link>
-        <button onClick={() => {
-          console.log(customer);
-        }}>
-          test
-        </button>
     </main>
   ) : (
     <Link href="/signup" passHref>
