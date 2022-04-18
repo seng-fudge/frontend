@@ -6,45 +6,45 @@ export default function ProgBar({ index }) {
 
   return (
     <div className="progbar">
-      <a
+      <Link
         href="/customer"
-        class={index == 0 ? "active" : ""}
+        className={index == 0 ? "active" : ""}
       >
         Customer
-      </a>
-      <a
+      </Link>
+      <Link
         href="/payment"
-        class={index == 1 ? "active" : ""}
+        className={index == 1 ? "active" : ""}
       >
         Payment
-      </a>
-      <a
+      </Link>
+      <Link
         href="/product"
-        class={index == 2 ? "active" : ""}
+        className={index == 2 ? "active" : ""}
       >
         Product
-      </a>
-      <a
+      </Link>
+      <Link
         href="/showInvoice"
-        class={index == 3 ? "active" : ""}
+        className={index == 3 ? "active" : ""}
       >
         Preview
-      </a>
+      </Link>
 
       {index == 0 ? (
-        <a href="/payment">❯</a>
+        <Link href="/payment">❯</Link>
       ) : index == 1 ? (
         <>
-          <a href="/customer">❮</a>
-          <a href="/product">❯</a>
+          <Link href="/customer">❮</Link>
+          <Link href="/product">❯</Link>
         </>
       ) : index == 2 ? (
         <>
-          <a href="/payment">❮</a>
-          <a href="/showInvoice">❯</a>
+          <Link href="/payment">❮</Link>
+          <Link href="/showInvoice">❯</Link>
         </>
       ) : (
-        <a href="/product">❮</a>
+        <Link href="/product">❮</Link>
       )}
     </div>
   );
