@@ -17,8 +17,8 @@ export default function NavBar() {
         </li>
 
         {email ? (<li>
-          <Link href="/user" passHref>
-            <button className="btn-gradient">User details</button>
+          <Link href="/invoiceHistory" passHref>
+            <button className="btn-gradient">History</button>
           </Link>
         </li>) : <></>}
 

@@ -15,12 +15,16 @@ export default function Home() {
 
   return email ? (
     <main className="full gradient">
-        <Link href="/createInvoice/customerDetails" passHref>
-          <button className="btn-outline-white centered extra-large">Create</button>
-        </Link>
-        <button onClick={test}>
-          test
-        </button>
+        <div className="split left">
+            <Link href="/createInvoice/customerDetails" passHref>
+            <button className="btn-outline-white centered extra-large">Create</button>
+            </Link>
+        </div>
+        <div className="split right">
+            <Link href="/userdetails" passHref>
+            <button className="btn-outline-white centered extra-large">User Details</button>
+            </Link>
+        </div>
     </main>
   ) : (
     <Link href="/signup" passHref>
