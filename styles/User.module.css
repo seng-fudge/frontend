@@ -11,3 +11,12 @@
     display: inline-block;
     width: 180px;
 }
+
+.subtitle{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.description{
+    margin: 0;
+}

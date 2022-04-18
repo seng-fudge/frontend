@@ -21,7 +21,7 @@ export default function Home() {
             </Link>
         </div>
         <div className="split right">
-            <Link href="/userdetails" passHref>
+            <Link href="/user" passHref>
             <button className="btn-outline-white centered extra-large">User Details</button>
             </Link>
         </div>
