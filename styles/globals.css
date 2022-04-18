@@ -57,7 +57,7 @@ a {
   top: 0;
   padding: 0 10vw;
   font-weight: bold;
-  border-bottom: 1px solid var(--color-gray);
+  border-bottom: 5px solid rgba(172, 185, 253, 0.9);
   z-index: 99;
 }
 
@@ -137,6 +137,7 @@ button {
   border-radius: 5rem;
   cursor: pointer;
   margin: 0.5rem 1rem 0.5rem 1rem;
+  transition: background-color .3s;
 }
 
 button:disabled,
@@ -145,9 +146,9 @@ button[disabled] {
   cursor: not-allowed;
 }
 
-button.btn-red {
-  background-color: var(--color-red);
-  color: white;
+button.btn-blue-text {
+  background-color: white;
+  color: #427af4;
 }
 
 button.btn-green {
@@ -179,6 +180,17 @@ button.btn-gradient {
   );
 }
 
+button:hover {background-color: #92a3da;}
+
+button.btn-blue-text:hover {
+    background-color: #92a3da;
+    color: white;
+}
+
+button.logout:hover{
+    background-color: red;
+    color: white;
+}
 
 button.large {
   font-size: 20px;
