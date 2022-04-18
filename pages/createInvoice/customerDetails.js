@@ -195,52 +195,58 @@ function InvoiceCreationForm() {
     <Loader />
   ) : (
     <body>
-      <div className="centered">
+      <div className="middle-x">
         <div class="progbar">
             <a href="/createInvoice/customerDetails" class="active">Customer Details</a>
-            <a href="/createInvoice/paymentDetails">Payment Details</a>
             <a href="/createInvoice/productDetails">Product Details</a>
+            <a href="/createInvoice/paymentDetails">Payment Details</a>
         </div>
         <div class="progbar">
-            <a href="/createInvoice/paymentDetails">❯</a>
+            <a href="/createInvoice/productDetails">❯</a>
         </div>
-        <form id="form" onSubmit={() => onSubmit()}>
-            <h1 className="gradient-text">Customer Details</h1>
-            <FormInput
-              id="formBuyerReference"
-              name="Buyer reference"
-              type="text"
-            />
-            <FormInput
-              id="formCustomerContactName"
-              name="Customer Name"
-              type="text"
-            />
-            <FormInput
-              id="formCustomerRegistration"
-              name="Registered Business Name"
-              type="text"
-            />
-            <FormInput id="formCustomerEmail" name="Email" type="email" />
-            <FormInput
-              id="formCustomerStreet"
-              name="Street Address"
-              type="text"
-            />
-            <FormInput
-              id="formCustomerAddStreet"
-              name="Additional Street Address"
-              type="text"
-            />
-            <FormInput id="formCustomerCity" name="City" type="text" />
-            <FormInput id="formCustomerPost" name="Postcode" type="number" />
-            <FormInput id="formCustomerCountry" name="Country" type="text" />
+        <h1 className="gradient-text">Customer Details</h1>
+        <div>
+            <form id="form" onSubmit={() => onSubmit()}>
+                <div className="split left gap-left down">
+                    <FormInput
+                    id="formBuyerReference"
+                    name="Buyer reference"
+                    type="text"
+                    />
+                    <FormInput
+                    id="formCustomerContactName"
+                    name="Customer Name"
+                    type="text"
+                    />
+                    <FormInput
+                    id="formCustomerRegistration"
+                    name="Registered Business Name"
+                    type="text"
+                    />
+                    <FormInput id="formCustomerEmail" name="Email" type="email" />
+                </div>
 
-            <button type="submit" className="btn-gradient">
-              Create Invoice
-            </button>
-        </form>
-      </div>
+                <div className="split right gap-right down">
+                    <FormInput
+                    id="formCustomerStreet"
+                    name="Street Address"
+                    type="text"
+                    />
+                    <FormInput
+                    id="formCustomerAddStreet"
+                    name="Additional Street Address"
+                    type="text"
+                    />
+                    <FormInput id="formCustomerCity" name="City" type="text" />
+                    <FormInput id="formCustomerPost" name="Postcode" type="number" />
+                    <FormInput id="formCustomerCountry" name="Country" type="text" />
+                <button type="submit" className="btn-gradient">
+                    Next
+                </button>
+                </div>
+            </form>
+        </div>
+        </div>
     </body>
   );
 }

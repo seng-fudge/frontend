@@ -198,11 +198,12 @@ function InvoiceCreationForm() {
       <div className="centered">
         <div class="progbar">
             <a href="/createInvoice/customerDetails">Customer Details</a>
-            <a href="/createInvoice/paymentDetails">Payment Details</a>
             <a href="/createInvoice/productDetails" class="active">Product Details</a>
+            <a href="/createInvoice/paymentDetails">Payment Details</a>
         </div>
         <div class="progbar">
-            <a href="/createInvoice/paymentDetails">❮</a>
+            <a href="/createInvoice/customerDetails">❮</a>
+            <a href="/createInvoice/paymentDetails">❯</a>
         </div>
         <form id="form" onSubmit={() => onSubmit()}>
             <h1 className="gradient-text">Payment Details</h1>

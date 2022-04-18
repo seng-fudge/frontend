@@ -87,6 +87,7 @@ a {
     display: inline-block;
     left: 50%;
     margin-top: 100px;
+    z-index: 1000;
   }
   
 .progbar a {
@@ -98,6 +99,7 @@ a {
     border: 1px solid #ddd;
     border-radius: 5rem;
     margin: 0 5px;
+    z-index: 1000;
   }
   
 .progbar a.active {
@@ -112,9 +114,10 @@ a {
     color: white;
     border: none;
     border-radius: 5rem;
+    z-index: 1000;
   }
   
-.progbar a:hover:not(.active) {background-color: #bbcbfe;}
+.progbar a:hover:not(.active) {background-color: #bbcbfe; z-index: 1000;}
 
 /* Buttons */
 
@@ -246,9 +249,25 @@ button.extra-large {
   left: 0;
 }
 
-.gap {
-    padding-left: 20px;
-    padding-bottom: 20px;
+.gap-left {
+    padding-left: 8%;
+}
+
+.gap-right {
+    padding-right: 8%;
+}
+
+.gap-top {
+    padding-top: 8%;
+}
+
+.gap-bottom {
+    padding-bottom: 8%;
+}
+
+.down {
+    padding-top: 18%;
+    z-index: -1;
 }
 
 /* Control the right side */
@@ -262,6 +281,11 @@ button.extra-large {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.middle-x {
+    left: 50%;
+    text-align: center;
 }
 
 .white{
