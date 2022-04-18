@@ -9,12 +9,6 @@ import ProgBar from "../components/Progbar";
 export default function ShowInvoice() {
   const { email, customer, payment, product } = useContext(UserContext);
 
-  const test = () => {
-    console.log(product);
-    console.log(customer);
-    console.log(payment);
-  };
-
   return email ? (
     <main>
       <ProgBar index={3} />
@@ -23,9 +17,6 @@ export default function ShowInvoice() {
       ) : (
         <>
           <h1>You must create all parts of invoice first</h1>
-          <button onClick={test}>
-            Test
-          </button>
         </>
       )}
     </main>
