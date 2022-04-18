@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function ProgBar({ index }) {
 
   return (
-    <div class="progbar">
+    <div className="progbar">
       <Link
         href="/customer"
         className={index == 0 ? "active" : ""}
