@@ -5,6 +5,8 @@ import LoginButton from "../components/LoginButton";
 import FormInput from "../components/FormInput";
 import Loader from "../components/Loader";
 import jsCookie from "js-cookie";
+import ProgBar from "../components/Progbar";
+import { useRouter } from "next/router";
 
 export default function Customer() {
   const { email } = useContext(UserContext);
@@ -22,6 +24,8 @@ function CustomerCreate() {
   const {token, setCustomer} = useContext(UserContext);
 
   const [pastCustomers, setPastCustomers] = useState([]);
+
+  const router = useRouter()
 
   const onSubmit = async () => {
 
@@ -66,7 +70,7 @@ function CustomerCreate() {
 
       if (response.ok) {
         const data = await response.text();
-
+        router.push("/payment")
       } else {
         const data = await response.json();
 
@@ -130,6 +134,7 @@ function CustomerCreate() {
         )}
       </div>
       <div className="split-75 right gap-left gap-bottom">
+        <ProgBar index={0}/>
         <form id="form" onSubmit={() => onSubmit()}>
           <h1 className="gradient-text large-text reduce-margin">Customer Details</h1>
           <FormInput
@@ -162,7 +167,7 @@ function CustomerCreate() {
           <FormInput id="formCustomerPost" name="Postcode" type="number" />
           <FormInput id="formCustomerCountry" name="Country" type="text" />
           <button type="submit" className="btn-gradient">
-            Submit
+            Next
           </button>
         </form>
       </div>
@@ -181,6 +186,7 @@ function DisplayCustomers({customers}){
 
 function CustomerForm({customer}){
 
+  const router = useRouter()
 
   const {setCustomer} = useContext(UserContext)
 
@@ -188,6 +194,7 @@ function CustomerForm({customer}){
     setCustomer(customer)
 
     jsCookie.set('customer', customer, { expires: 1/24 })
+    router.push("/payment")
   }
 
   return <div className="pointer" onClick={() => {onSelect()}} >

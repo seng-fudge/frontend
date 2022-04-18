@@ -15,12 +15,9 @@ export default function Home() {
 
   return email ? (
     <main className="full gradient">
-        <Link href="/createInvoice/customerDetails" passHref>
+        <Link href="/customer" passHref>
           <button className="btn-outline-white centered extra-large">Create</button>
         </Link>
-        <button onClick={test}>
-          test
-        </button>
     </main>
   ) : (
     <Link href="/signup" passHref>

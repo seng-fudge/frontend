@@ -1,20 +1,51 @@
-export default function ProgBar({ index }) {
-  return <div class="progbar">
-    <a href="/createInvoice/customerDetails" class={index == 0 ? "active" : ""}>
-      Customer Details
-    </a>
-    <a href="/createInvoice/productDetails" class={index == 1 ? "active" : ""}>Product Details</a>
-    <a href="/createInvoice/paymentDetails" class={index == 2 ? "active" : ""}>Payment Details</a>
+import { useContext } from "react";
+import { UserContext } from "../lib/context";
+import Link from "next/link";
 
-    {index == 0 ? (
-      <a href="/createInvoice/productDetails">❯</a>
-    ) : index == 1 ? (
-      <>
-        <a href="/createInvoice/customerDetails">❮</a>
-        <a href="/createInvoice/paymentDetails">❯</a>
-      </>
-    ) : (
-      <a href="/createInvoice/productDetails">❮</a>
-    )}
-  </div>;
+export default function ProgBar({ index }) {
+
+  return (
+    <div class="progbar">
+      <Link
+        href="/customer"
+        className={index == 0 ? "active" : ""}
+      >
+        Customer
+      </Link>
+      <Link
+        href="/payment"
+        className={index == 1 ? "active" : ""}
+      >
+        Payment
+      </Link>
+      <Link
+        href="/product"
+        className={index == 2 ? "active" : ""}
+      >
+        Product
+      </Link>
+      <Link
+        href="/showInvoice"
+        className={index == 3 ? "active" : ""}
+      >
+        Preview
+      </Link>
+
+      {index == 0 ? (
+        <Link href="/payment">❯</Link>
+      ) : index == 1 ? (
+        <>
+          <Link href="/customer">❮</Link>
+          <Link href="/product">❯</Link>
+        </>
+      ) : index == 2 ? (
+        <>
+          <Link href="/payment">❮</Link>
+          <Link href="/showInvoice">❯</Link>
+        </>
+      ) : (
+        <Link href="/product">❮</Link>
+      )}
+    </div>
+  );
 }

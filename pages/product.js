@@ -5,6 +5,8 @@ import LoginButton from "../components/LoginButton";
 import FormInput from "../components/FormInput";
 import Loader from "../components/Loader";
 import jsCookie from "js-cookie";
+import ProgBar from "../components/Progbar";
+import { useRouter } from "next/router";
 
 export default function Product() {
   const { email } = useContext(UserContext);
@@ -18,7 +20,8 @@ TODO
 */
 
 function ProductCreate() {
-   const { token, setProduct } = useContext(UserContext);
+  const router = useRouter()
+  const { token, setProduct } = useContext(UserContext);
 
   const [pastProducts, setPastProducts] = useState([]);
 
@@ -61,6 +64,8 @@ function ProductCreate() {
         const data = await response.text();
 
         console.log(data);
+
+        router.push("/showInvoice")
       } else {
         const data = await response.json();
 
@@ -123,15 +128,12 @@ function ProductCreate() {
         )}
       </div>
       <div className="split-75 right gap-left gap-bottom">
+        <ProgBar index={2} />
         <form id="form" onSubmit={() => onSubmit()}>
           <h1 className="gradient-text large-text reduce-margin">
             Product Details
           </h1>
-          <FormInput
-            id="formInvoiceId"
-            name="Invoice id"
-            type="number"
-          />
+          <FormInput id="formInvoiceId" name="Invoice id" type="number" />
           <FormInput
             id="formInvoiceQuantity"
             name="Product quantity"
@@ -142,11 +144,7 @@ function ProductCreate() {
             name="Line extention"
             type="number"
           />
-          <FormInput
-            id="formInvoiceName"
-            name="Invoice name"
-            type="text"
-          />
+          <FormInput id="formInvoiceName" name="Invoice name" type="text" />
           <FormInput
             id="formInvoicePriceAmount"
             name="Product price"
@@ -158,7 +156,7 @@ function ProductCreate() {
             type="number"
           />
           <button type="submit" className="btn-gradient">
-            Submit
+            Next
           </button>
         </form>
       </div>
@@ -179,11 +177,13 @@ function DisplayProducts({ products }) {
 
 function ProductForm({ product }) {
   const { setProduct } = useContext(UserContext);
+  const router = useRouter()
 
   const onSelect = () => {
     setProduct(product);
 
     jsCookie.set("product", product, { expires: 1 / 24 });
+    router.push("/showInvoice")
   };
 
   return (
