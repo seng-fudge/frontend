@@ -195,9 +195,7 @@ function InvoiceCreationForm() {
     <Loader />
   ) : (
     <body>
-      <div>
-        <form id="form" onSubmit={() => onSubmit()}>
-          <div className="centered">
+        <div className="middle-x">
             <div class="progbar">
                 <a href="/createInvoice/customerDetails">Customer Details</a>
                 <a href="/createInvoice/productDetails">Product Details</a>
@@ -206,95 +204,44 @@ function InvoiceCreationForm() {
             <div class="progbar">
                 <a href="/createInvoice/productDetails">❮</a>
             </div>
+            <h1 className="gradient-text">Payment Details</h1>
+            <form id="form" onSubmit={() => onSubmit()}>
+                <div className="split left gap-left down">
+                    <FormInput id="formDueDate" name="Due date" type="text"/>
+                    <FormInput id="formPaymentType" name="Payment Type" type="number" />
+                    <FormInput id="formPaymentID" name="Payment ID" type="number" />
+                    <FormInput id="formPaymentTerms" name="Payment Terms" type="text" />
 
-            <div className="split left">
 
-                <h1 className="gradient-text">Payment Details</h1>
-                <FormInput id="formDueDate" name="Due date" type="text"/>
-                <FormInput id="formPaymentType" name="Payment Type" type="number" />
-                <FormInput id="formPaymentID" name="Payment ID" type="number" />
-                <FormInput id="formPaymentTerms" name="Payment Terms" type="text" />
-
-                <h1 className="gradient-text">Tax Details</h1>
-                <FormInput id="formTaxAmount" name="Tax Amount" type="number" />
-                <FormInput
-                id="formTaxableAmount"
-                name="Taxable Amount"
-                type="number"
-                />
-                <FormInput
-                id="formTaxSubtotalAmount"
-                name="Tax Subtotal Amount"
-                type="number"
-                />
-                <FormInput id="formTaxID" name="Tax ID" type="number" />
-                <FormInput id="formTaxPercent" name="Tax Percent" type="number" />
-                <FormInput
-                id="formTaxSchemeID"
-                name="Tax Scheme ID"
-                type="number"
-                />
-                <FormInput
-                id="formTaxExclusiveAmount"
-                name="Tax Exclusive Amount"
-                type="number"
-                />
-            </div>
-            <div className="split right">
-                
-                <FormInput
-                id="formPayableRoundingAmount"
-                name="Payable Rounding Amount"
-                type="number"
-                />
-
-                <h1 className="gradient-text">Invoice Item Details</h1>
-                <FormInput id="formInvoiceID" name="Invoice ID" type="tenumberxt" />
-                <FormInput
-                id="formInvoiceQuantity"
-                name="Invoice Quantity"
-                type="number"
-                />
-                <FormInput
-                id="formInvoiceLineExtension"
-                name="Invoice Line Extension"
-                type="number"
-                />
-                <FormInput id="formInvoiceName" name="Invoice Name" type="text" />
-                <FormInput
-                id="formInvoiceTaxID"
-                name="Invoice Tax ID"
-                type="number"
-                />
-                <FormInput
-                id="formInvoiceTaxPercent"
-                name="Invoice Tax Percent"
-                type="number"
-                />
-                <FormInput
-                id="formInvoiceTaxSchemeID"
-                name="Invoice Tax Scheme ID"
-                type="number"
-                />
-
-                {/* product */}
-                <FormInput
-                id="formInvoicePriceAmount"
-                name="Invoice Price Amount"
-                type="number"
-                />
-                <FormInput
-                id="formInvoiceBaseQuantity"
-                name="Invoice Base Quantity"
-                type="number"
-                />
-            </div>
-          
-
-            <button type="submit" className="btn-gradient">
-              Create Invoice
-            </button>
-          </div>
+                    <FormInput id="formTaxAmount" name="Tax Amount" type="number" />
+                    <FormInput
+                    id="formTaxableAmount"
+                    name="Taxable Amount"
+                    type="number"
+                    />
+                    <FormInput
+                    id="formTaxSubtotalAmount"
+                    name="Tax Subtotal Amount"
+                    type="number"
+                    />
+                </div>
+                <div className="split right gap-right down">
+                    <FormInput id="formTaxID" name="Tax ID" type="number" />
+                    <FormInput id="formTaxPercent" name="Tax Percent" type="number" />
+                    <FormInput
+                    id="formTaxSchemeID"
+                    name="Tax Scheme ID"
+                    type="number"
+                    />
+                    <FormInput
+                    id="formTaxExclusiveAmount"
+                    name="Tax Exclusive Amount"
+                    type="number"
+                    />
+                    <button type="submit" className="btn-gradient">
+                    Create Invoice
+                    </button>
+                </div>
         </form>
       </div>
     </body>

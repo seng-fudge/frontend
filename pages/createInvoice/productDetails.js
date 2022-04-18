@@ -195,7 +195,7 @@ function InvoiceCreationForm() {
     <Loader />
   ) : (
     <body>
-      <div className="centered">
+      <div className="middle-x">
         <div class="progbar">
             <a href="/createInvoice/customerDetails">Customer Details</a>
             <a href="/createInvoice/productDetails" class="active">Product Details</a>
@@ -205,71 +205,18 @@ function InvoiceCreationForm() {
             <a href="/createInvoice/customerDetails">❮</a>
             <a href="/createInvoice/paymentDetails">❯</a>
         </div>
+        <h1 className="gradient-text">Product Details</h1>
         <form id="form" onSubmit={() => onSubmit()}>
-            <h1 className="gradient-text">Payment Details</h1>
-            <FormInput id="formDueDate" name="Due date" type="text"/>
-            <FormInput id="formPaymentType" name="Payment Type" type="number" />
-
-            <FormInput id="formPaymentID" name="Payment ID" type="number" />
-            <FormInput id="formPaymentTerms" name="Payment Terms" type="text" />
-
-            <h1 className="gradient-text">Tax Details</h1>
-            <FormInput id="formTaxAmount" name="Tax Amount" type="number" />
-            <FormInput
-              id="formTaxableAmount"
-              name="Taxable Amount"
-              type="number"
-            />
-            <FormInput
-              id="formTaxSubtotalAmount"
-              name="Tax Subtotal Amount"
-              type="number"
-            />
-            <FormInput id="formTaxID" name="Tax ID" type="number" />
-            <FormInput id="formTaxPercent" name="Tax Percent" type="number" />
-            <FormInput
-              id="formTaxSchemeID"
-              name="Tax Scheme ID"
-              type="number"
-            />
-            <FormInput
-              id="formTaxExclusiveAmount"
-              name="Tax Exclusive Amount"
-              type="number"
-            />
-            <FormInput
-              id="formPayableRoundingAmount"
-              name="Payable Rounding Amount"
-              type="number"
-            />
-
-
-<h1 className="gradient-text">Invoice Item Details</h1>
-            <FormInput id="formInvoiceID" name="Invoice ID" type="tenumberxt" />
-            <FormInput
-              id="formInvoiceQuantity"
-              name="Invoice Quantity"
-              type="number"
-            />
-            <FormInput
-              id="formInvoiceLineExtension"
-              name="Invoice Line Extension"
-              type="number"
-            />
             <FormInput id="formInvoiceName" name="Invoice Name" type="text" />
             <FormInput
               id="formInvoiceTaxID"
               name="Invoice Tax ID"
               type="number"
             />
+            <FormInput id="formInvoiceID" name="Invoice ID" type="tenumberxt" />
             <FormInput
-              id="formInvoiceTaxPercent"
-              name="Invoice Tax Percent"
-              type="number"
-            />
-            <FormInput
-              id="formInvoiceTaxSchemeID"
-              name="Invoice Tax Scheme ID"
+              id="formInvoiceQuantity"
+              name="Invoice Quantity"
               type="number"
             />
             <FormInput
@@ -291,3 +238,5 @@ function InvoiceCreationForm() {
     </body>
   );
 }
+
+
