@@ -45,7 +45,7 @@ export default function LogoutButton() {
   }
 
   return (
-    <button className="btn-blue-text" onClick={() => resetLogin()}>
+    <button className="btn-blue-text logout" onClick={() => resetLogin()}>
       Logout
     </button>
   );

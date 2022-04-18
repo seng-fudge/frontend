@@ -187,6 +187,11 @@ button.btn-blue-text:hover {
     color: white;
 }
 
+button.logout:hover{
+    background-color: red;
+    color: white;
+}
+
 button.large {
   font-size: 20px;
 }
