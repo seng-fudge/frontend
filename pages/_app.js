@@ -18,9 +18,6 @@ function MyApp({ Component, pageProps }) {
     setSendToken(loadCookie("sendToken"));
     setEmail(loadCookie("email"));
     setToken(loadCookie("token"));
-    setCustomer(loadCookie("customer"));
-    setPayment(loadCookie("payment"));
-    setProduct(loadCookie("product"));
   }, []);
 
   return (

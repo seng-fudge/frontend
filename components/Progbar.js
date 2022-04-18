@@ -1,20 +1,50 @@
-export default function ProgBar({ index }) {
-  return <div class="progbar">
-    <a href="/createInvoice/customerDetails" class={index == 0 ? "active" : ""}>
-      Customer Details
-    </a>
-    <a href="/createInvoice/productDetails" class={index == 1 ? "active" : ""}>Product Details</a>
-    <a href="/createInvoice/paymentDetails" class={index == 2 ? "active" : ""}>Payment Details</a>
+import { useContext } from "react";
+import { UserContext } from "../lib/context";
+import Link from "next/link";
 
-    {index == 0 ? (
-      <a href="/createInvoice/productDetails">❯</a>
-    ) : index == 1 ? (
-      <>
-        <a href="/createInvoice/customerDetails">❮</a>
-        <a href="/createInvoice/paymentDetails">❯</a>
-      </>
-    ) : (
-      <a href="/createInvoice/productDetails">❮</a>
-    )}
-  </div>;
+export default function ProgBar({ index }) {
+  return (
+    <div className="progbar">
+      <Link href="/customer" passHref>
+        <button className={index == 0 ? "active" : ""}>Customer</button>
+      </Link>
+      <Link href="/payment" passHref>
+        <button className={index == 1 ? "active" : ""}>Payment</button>
+      </Link>
+      <Link href="/product" passHref>
+        <button className={index == 2 ? "active" : ""}>Product</button>
+      </Link>
+      <Link href="/showInvoice" passHref>
+        <button className={index == 3 ? "active" : ""}>Preview</button>
+      </Link>
+
+      {index == 0 ? (
+        <Link href="/payment" passHref>
+          <button>❯</button>
+        </Link>
+      ) : index == 1 ? (
+        <>
+          <Link href="/customer" passHref>
+            <button>❮</button>
+          </Link>
+          <Link href="/product" passHref>
+            <button>❯</button>
+          </Link>
+        </>
+      ) : index == 2 ? (
+        <>
+          <Link href="/payment" passHref>
+            <button>❮</button>
+          </Link>
+          <Link href="/showInvoice" passHref>
+            <button>❯</button>
+          </Link>
+        </>
+      ) : (
+        <Link href="/product" passHref>
+          <button>❮</button>
+        </Link>
+      )}
+    </div>
+  );
 }

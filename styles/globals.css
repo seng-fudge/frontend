@@ -86,12 +86,13 @@ a {
 .progbar {
     display: inline-block;
     left: 50%;
-    margin-top: 100px;
+    margin-top: 40px;
     z-index: 1000;
   }
   
-.progbar a {
+.progbar button {
     color: #4285f4;
+    background-color: transparent;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
@@ -102,7 +103,7 @@ a {
     z-index: 1000;
   }
   
-.progbar a.active {
+.progbar button.active {
     background: conic-gradient(
       from 154.3deg at 55.33% 50%,
       #bbc0fe -163.1deg,
@@ -117,7 +118,7 @@ a {
     z-index: 1000;
   }
   
-.progbar a:hover:not(.active) {background-color: #bbcbfe; z-index: 1000;}
+.progbar button:hover:not(.active) {background-color: #bbcbfe; z-index: 1000;}
 
 /* Buttons */
 
@@ -306,7 +307,6 @@ button.extra-large {
 
 .white-title {
   color: white;
-  font-family: "Ubuntu";
   font-style: normal;
   font-weight: 700;
   font-size: 60px;
@@ -318,9 +318,13 @@ button.extra-large {
   margin-bottom: 10px;
 }
 
+.blurb {
+  margin-top: 0px;
+  font-size: 20px;
+  color: white;
+}
+
 .title {
-  font-family: "Ubuntu";
-  font-style: normal;
   font-weight: 700;
   font-size: 80px;
   line-height: 92px;

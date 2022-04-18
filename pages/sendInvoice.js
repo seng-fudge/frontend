@@ -120,7 +120,8 @@ function SendForm() {
 
   return (
     <section className="centered">
-      <h1 className="white-title">Confirmation</h1>
+      <h1 className="white-title raise-content">Send</h1>
+      <p className="blurb">How would you like to send your invoice?</p>
       <button className="btn-white" onClick={() => sendXml()}>
         Send xml
       </button>

@@ -5,6 +5,8 @@ import LoginButton from "../components/LoginButton";
 import FormInput from "../components/FormInput";
 import Loader from "../components/Loader";
 import jsCookie from "js-cookie";
+import ProgBar from "../components/Progbar";
+import { useRouter } from "next/router";
 
 export default function Payment() {
   const { email } = useContext(UserContext);
@@ -19,6 +21,8 @@ TODO
 
 function PaymentCreate() {
   const { token, setPayment } = useContext(UserContext);
+
+  const router = useRouter()
 
   const [pastPayments, setPastPayments] = useState([]);
 
@@ -57,6 +61,8 @@ function PaymentCreate() {
 
       if (response.ok) {
         const data = await response.text();
+
+        router.push("/product")
 
         console.log(data);
       } else {
@@ -121,6 +127,7 @@ function PaymentCreate() {
         )}
       </div>
       <div className="split-75 right gap-left gap-bottom">
+        <ProgBar index={1}/>
         <form id="form" onSubmit={() => onSubmit()}>
           <h1 className="gradient-text large-text reduce-margin">
             Payment Details
@@ -146,7 +153,7 @@ function PaymentCreate() {
             type="text"
           />
           <button type="submit" className="btn-gradient">
-            Submit
+            Next
           </button>
         </form>
       </div>
@@ -166,12 +173,14 @@ function DisplayPayments({ payments }) {
 }
 
 function PaymentForm({ payment }) {
+  const router = useRouter()
   const { setPayment } = useContext(UserContext);
 
   const onSelect = () => {
     setPayment(payment);
 
     jsCookie.set("payment", payment, { expires: 1 / 24 });
+    router.push("/product")
   };
 
   return (
