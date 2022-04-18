@@ -57,7 +57,7 @@ a {
   top: 0;
   padding: 0 10vw;
   font-weight: bold;
-  border-bottom: 1px solid var(--color-gray);
+  border-bottom: 5px solid rgba(172, 185, 253, 0.9);
   z-index: 99;
 }
 
