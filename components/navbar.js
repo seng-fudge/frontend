@@ -17,8 +17,14 @@ export default function NavBar() {
         </li>
 
         {email ? (<li>
+          <Link href="/createInvoice/customerDetails" passHref>
+            <button className="btn-blue-text">Create</button>
+          </Link>
+        </li>) : <></>}
+
+        {email ? (<li>
           <Link href="/invoiceHistory" passHref>
-            <button className="btn-gradient">History</button>
+            <button className="btn-blue-text">Invoice History</button>
           </Link>
         </li>) : <></>}
 

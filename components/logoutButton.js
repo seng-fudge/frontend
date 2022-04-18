@@ -45,7 +45,7 @@ export default function LogoutButton() {
   }
 
   return (
-    <button className="btn-gradient" onClick={() => resetLogin()}>
+    <button className="btn-blue-text" onClick={() => resetLogin()}>
       Logout
     </button>
   );
