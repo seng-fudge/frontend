@@ -5,6 +5,7 @@ import Loader from "../../components/Loader";
 import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
 import LoginButton from "../../components/LoginButton";
+import ProgBar from "../../components/Progbar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -196,14 +197,7 @@ function InvoiceCreationForm() {
   ) : (
     <body>
       <div className="middle-x">
-        <div class="progbar">
-            <a href="/createInvoice/customerDetails" class="active">Customer Details</a>
-            <a href="/createInvoice/productDetails">Product Details</a>
-            <a href="/createInvoice/paymentDetails">Payment Details</a>
-        </div>
-        <div class="progbar">
-            <a href="/createInvoice/productDetails">❯</a>
-        </div>
+        <ProgBar index={0}/>
         <h1 className="gradient-text">Customer Details</h1>
         <div>
             <form id="form" onSubmit={() => onSubmit()}>
