@@ -120,7 +120,7 @@ function PaymentCreate() {
           </div>
         )}
       </div>
-      <div className="split-75 right gap">
+      <div className="split-75 right gap-left gap-bottom">
         <form id="form" onSubmit={() => onSubmit()}>
           <h1 className="gradient-text large-text reduce-margin">
             Payment Details
@@ -156,7 +156,7 @@ function PaymentCreate() {
 
 function DisplayPayments({ payments }) {
   return (
-    <div className="gap">
+    <div className="gap-left gap-bottom">
       <h1 className="white">Previous payments</h1>
       {payments.map((e) => (
         <PaymentForm payment={e} key={e["paymentId"]} />

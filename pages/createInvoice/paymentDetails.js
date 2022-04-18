@@ -1,11 +1,11 @@
-import { UserContext } from "../lib/context";
+import { UserContext } from "../../lib/context";
 import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import styles from "../styles/Authentication.module.css";
-import Loader from "../components/Loader";
-import FormInput from "../components/FormInput";
+import Loader from "../../components/Loader";
+import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
-import LoginButton from "../components/LoginButton";
+import LoginButton from "../../components/LoginButton";
+import ProgBar from "../../components/Progbar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -196,122 +196,46 @@ function InvoiceCreationForm() {
     <Loader />
   ) : (
     <body>
-      <div>
-        <form id="form" onSubmit={() => onSubmit()}>
-          <div className="split left gap">
-            <h1 className="gradient-text">Customer Details</h1>
-            <FormInput
-              id="formBuyerReference"
-              name="Buyer reference"
-              type="text"
-            />
-            <FormInput
-              id="formCustomerContactName"
-              name="Customer Name"
-              type="text"
-            />
-            <FormInput
-              id="formCustomerRegistration"
-              name="Registered Business Name"
-              type="text"
-            />
-            <FormInput id="formCustomerEmail" name="Email" type="email" />
-            <FormInput
-              id="formCustomerStreet"
-              name="Street Address"
-              type="text"
-            />
-            <FormInput
-              id="formCustomerAddStreet"
-              name="Additional Street Address"
-              type="text"
-            />
-            <FormInput id="formCustomerCity" name="City" type="text" />
-            <FormInput id="formCustomerPost" name="Postcode" type="number" />
-            <FormInput id="formCustomerCountry" name="Country" type="text" />
-          </div>
-
-          <div className="split right gap">
+        <div className="middle-x">
+            <ProgBar index={2}/>
             <h1 className="gradient-text">Payment Details</h1>
-            <FormInput id="formDueDate" name="Due date" type="text"/>
-            <FormInput id="formPaymentType" name="Payment Type" type="number" />
+            <form id="form" onSubmit={() => onSubmit()}>
+                <div className="split left gap-left down">
+                    <FormInput id="formDueDate" name="Due date" type="text"/>
+                    <FormInput id="formPaymentType" name="Payment Type" type="number" />
+                    <FormInput id="formPaymentID" name="Payment ID" type="number" />
+                    <FormInput id="formPaymentTerms" name="Payment Terms" type="text" />
 
-            <FormInput id="formPaymentID" name="Payment ID" type="number" />
-            <FormInput id="formPaymentTerms" name="Payment Terms" type="text" />
 
-            <h1 className="gradient-text">Tax Details</h1>
-            <FormInput id="formTaxAmount" name="Tax Amount" type="number" />
-            <FormInput
-              id="formTaxableAmount"
-              name="Taxable Amount"
-              type="number"
-            />
-            <FormInput
-              id="formTaxSubtotalAmount"
-              name="Tax Subtotal Amount"
-              type="number"
-            />
-            <FormInput id="formTaxID" name="Tax ID" type="number" />
-            <FormInput id="formTaxPercent" name="Tax Percent" type="number" />
-            <FormInput
-              id="formTaxSchemeID"
-              name="Tax Scheme ID"
-              type="number"
-            />
-            <FormInput
-              id="formTaxExclusiveAmount"
-              name="Tax Exclusive Amount"
-              type="number"
-            />
-            <FormInput
-              id="formPayableRoundingAmount"
-              name="Payable Rounding Amount"
-              type="number"
-            />
-
-            <h1 className="gradient-text">Invoice Item Details</h1>
-            <FormInput id="formInvoiceID" name="Invoice ID" type="tenumberxt" />
-            <FormInput
-              id="formInvoiceQuantity"
-              name="Invoice Quantity"
-              type="number"
-            />
-            <FormInput
-              id="formInvoiceLineExtension"
-              name="Invoice Line Extension"
-              type="number"
-            />
-            <FormInput id="formInvoiceName" name="Invoice Name" type="text" />
-            <FormInput
-              id="formInvoiceTaxID"
-              name="Invoice Tax ID"
-              type="number"
-            />
-            <FormInput
-              id="formInvoiceTaxPercent"
-              name="Invoice Tax Percent"
-              type="number"
-            />
-            <FormInput
-              id="formInvoiceTaxSchemeID"
-              name="Invoice Tax Scheme ID"
-              type="number"
-            />
-            <FormInput
-              id="formInvoicePriceAmount"
-              name="Invoice Price Amount"
-              type="number"
-            />
-            <FormInput
-              id="formInvoiceBaseQuantity"
-              name="Invoice Base Quantity"
-              type="number"
-            />
-
-            <button type="submit" className="btn-gradient">
-              Create Invoice
-            </button>
-          </div>
+                    <FormInput id="formTaxAmount" name="Tax Amount" type="number" />
+                    <FormInput
+                    id="formTaxableAmount"
+                    name="Taxable Amount"
+                    type="number"
+                    />
+                    <FormInput
+                    id="formTaxSubtotalAmount"
+                    name="Tax Subtotal Amount"
+                    type="number"
+                    />
+                </div>
+                <div className="split right gap-right down">
+                    <FormInput id="formTaxID" name="Tax ID" type="number" />
+                    <FormInput id="formTaxPercent" name="Tax Percent" type="number" />
+                    <FormInput
+                    id="formTaxSchemeID"
+                    name="Tax Scheme ID"
+                    type="number"
+                    />
+                    <FormInput
+                    id="formTaxExclusiveAmount"
+                    name="Tax Exclusive Amount"
+                    type="number"
+                    />
+                    <button type="submit" className="btn-gradient">
+                    Create Invoice
+                    </button>
+                </div>
         </form>
       </div>
     </body>

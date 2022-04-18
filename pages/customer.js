@@ -129,7 +129,7 @@ function CustomerCreate() {
           </div>
         )}
       </div>
-      <div className="split-75 right gap">
+      <div className="split-75 right gap-left gap-bottom">
         <form id="form" onSubmit={() => onSubmit()}>
           <h1 className="gradient-text large-text reduce-margin">Customer Details</h1>
           <FormInput
@@ -172,7 +172,7 @@ function CustomerCreate() {
 
 function DisplayCustomers({customers}){
 
-  return <div className="gap">
+  return <div className="gap-left gap-bottom">
     <h1 className="white">Previous customers</h1>
     {customers.map(e => <CustomerForm customer={e} key={e['customerName']}/>)}
   </div>
