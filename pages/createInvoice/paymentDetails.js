@@ -1,12 +1,10 @@
 import { UserContext } from "../../lib/context";
 import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import styles from "../../styles/Authentication.module.css";
 import Loader from "../../components/Loader";
 import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
 import LoginButton from "../../components/LoginButton";
-import ProgressBar from "./progressBar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -198,9 +196,17 @@ function InvoiceCreationForm() {
   ) : (
     <body>
       <div>
-      <ProgressBar />
         <form id="form" onSubmit={() => onSubmit()}>
-          <div className="split left gap">
+          <div className="centered">
+            <div class="progbar">
+                <a href="/createInvoice/customerDetails">Customer Details</a>
+                <a href="/createInvoice/paymentDetails" class="active">Payment Details</a>
+                <a href="/createInvoice/productDetails">Product Details</a>
+            </div>
+            <div class="progbar">
+                <a href="/createInvoice/customerDetails">❮</a>
+                <a href="/createInvoice/productDetails">❯</a>
+            </div>
             <h1 className="gradient-text">Customer Details</h1>
             <FormInput
               id="formBuyerReference"
@@ -231,9 +237,7 @@ function InvoiceCreationForm() {
             <FormInput id="formCustomerCity" name="City" type="text" />
             <FormInput id="formCustomerPost" name="Postcode" type="number" />
             <FormInput id="formCustomerCountry" name="Country" type="text" />
-          </div>
-
-          <div className="split right gap">
+          
             <h1 className="gradient-text">Payment Details</h1>
             <FormInput id="formDueDate" name="Due date" type="text"/>
             <FormInput id="formPaymentType" name="Payment Type" type="number" />

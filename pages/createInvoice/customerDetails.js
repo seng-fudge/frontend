@@ -1,12 +1,10 @@
 import { UserContext } from "../../lib/context";
 import { useContext, useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
-import styles from "../../styles/Authentication.module.css";
 import Loader from "../../components/Loader";
 import FormInput from "../../components/FormInput";
 import { useRouter } from "next/router";
 import LoginButton from "../../components/LoginButton";
-import ProgressBar from "./progressBar";
 
 export default function CreateInvoice() {
   const { email } = useContext(UserContext);
@@ -198,6 +196,14 @@ function InvoiceCreationForm() {
   ) : (
     <body>
       <div className="centered">
+        <div class="progbar">
+            <a href="/createInvoice/customerDetails" class="active">Customer Details</a>
+            <a href="/createInvoice/paymentDetails">Payment Details</a>
+            <a href="/createInvoice/productDetails">Product Details</a>
+        </div>
+        <div class="progbar">
+            <a href="/createInvoice/paymentDetails">❯</a>
+        </div>
         <form id="form" onSubmit={() => onSubmit()}>
             <h1 className="gradient-text">Customer Details</h1>
             <FormInput
@@ -234,7 +240,6 @@ function InvoiceCreationForm() {
               Create Invoice
             </button>
         </form>
-        <ProgressBar />
       </div>
     </body>
   );
