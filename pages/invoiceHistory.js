@@ -80,7 +80,7 @@ function DisplayInvoice({ invoice }) {
 
   return (
     <div className={styles.invoice}>
-      <DisplayPart desctription={"Recipient"} data={invoice["email"]}/>
+      <DisplayPart desctription={"Recipient"} data={invoice['recipient']}/>
       <DisplayPart desctription={"Email"} data={invoice['email']}/>
       <DisplayPart desctription={"Time"} data={time}/>
       <DisplayPart desctription={"Due"} data={invoice['due']}/>

@@ -140,7 +140,7 @@ function PaymentCreate() {
           <FormInput
             id="formPaymentType"
             name="Payment type"
-            type="text"
+            type="number"
           />
           <FormInput
             id="formPaymentId"
