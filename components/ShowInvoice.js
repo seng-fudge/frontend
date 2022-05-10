@@ -1,17 +1,16 @@
 import styles from "../styles/Frame.module.css";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../lib/context";
-import LoginButton from "../components/LoginButton";
+import LoginButton from "./LoginButton";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import ProgBar from "../components/Progbar";
+import ProgBar from "./Progbar";
 
 export default function ShowInvoice() {
   const { email, customer, payment, product } = useContext(UserContext);
 
   return email ? (
     <main>
-      <ProgBar index={3} />
       {customer && payment && product ? (
         <DisplayInvoice />
       ) : (
@@ -26,8 +25,9 @@ export default function ShowInvoice() {
 }
 
 function DisplayInvoice() {
+  const loadingValue = `<html><main>Loading</main></html>`;
   const [htmlValue, setHtmlValue] = useState(
-    `<html><main>Loading</main></html>`
+    loadingValue
   );
 
   const { token, setXml, customer, payment, product } = useContext(UserContext);
@@ -248,8 +248,9 @@ function DisplayInvoice() {
         console.log(error);
       }
     }
+    setHtmlValue(loadingValue)
     fetchData();
-  }, [token]);
+  }, [token, customer, product, payment]);
 
   return (
     <>

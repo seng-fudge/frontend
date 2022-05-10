@@ -358,3 +358,70 @@ button.extra-large {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Animation for detail screen */
+
+.base {
+  position: relative;
+  left: 100%;
+}
+
+
+
+
+.slide-in-centre {
+  -webkit-animation: centre-slide 0.5s forwards;
+  -webkit-animation-delay: 0s;
+  animation: centre-slide 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes centre-slide {
+  100% { left: 0%; }
+}
+
+@keyframes centre-slide {
+  100% { left: 0%; }
+}
+
+.slide-out-right {
+  left:50%;
+  -webkit-animation: slide-right 0.5s forwards;
+  -webkit-animation-delay: 0s;
+  animation: slide-right 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slide-right {
+  100% { left: 100%; }
+}
+
+@keyframes slide-right {
+  100% { left: 100%; }
+}
+
+.slide-out-left {
+  left: 0%;
+  -webkit-animation: slide-left 0.5s forwards;
+  -webkit-animation-delay: 0s;
+  animation: slide-left 0.5s forwards;
+  animation-delay: 0s;
+}
+
+@-webkit-keyframes slide-left {
+  100% { left: -100%; }
+}
+
+@keyframes slide-left {
+  100% { left: -100%; }
+}
+
+.animation {
+  transition-duration: 100ms;              
+  transition-timing-function: cubic-bezier(0.175, 0.665, 0.320, 1), linear;
+  transition: left 2s ease;
+}
+
+.absolute {
+  position: absolute;  
+}

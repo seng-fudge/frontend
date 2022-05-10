@@ -2,48 +2,35 @@ import { useContext } from "react";
 import { UserContext } from "../lib/context";
 import Link from "next/link";
 
-export default function ProgBar({ index }) {
+export default function ProgBar({ index, setIndex }) {
   return (
-    <div className="progbar">
-      <Link href="/customer" passHref>
-        <button className={index == 0 ? "active" : ""}>Customer</button>
-      </Link>
-      <Link href="/payment" passHref>
-        <button className={index == 1 ? "active" : ""}>Payment</button>
-      </Link>
-      <Link href="/product" passHref>
-        <button className={index == 2 ? "active" : ""}>Product</button>
-      </Link>
-      <Link href="/showInvoice" passHref>
-        <button className={index == 3 ? "active" : ""}>Preview</button>
-      </Link>
+    <div className="progbar gap-left">
+      <button className={index == 0 ? "active" : ""} onClick={() => {setIndex(0)}}>Customer</button>
+      <button className={index == 1 ? "active" : ""} onClick={() => {setIndex(1)}}>Payment</button>
+      <button className={index == 2 ? "active" : ""} onClick={() => {setIndex(2)}}>Product</button>
+      <button className={index == 3 ? "active" : ""} onClick={() => {setIndex(3)}}>Preview</button>
 
-      {index == 0 ? (
-        <Link href="/payment" passHref>
-          <button>❯</button>
-        </Link>
-      ) : index == 1 ? (
-        <>
-          <Link href="/customer" passHref>
-            <button>❮</button>
-          </Link>
-          <Link href="/product" passHref>
-            <button>❯</button>
-          </Link>
-        </>
-      ) : index == 2 ? (
-        <>
-          <Link href="/payment" passHref>
-            <button>❮</button>
-          </Link>
-          <Link href="/showInvoice" passHref>
-            <button>❯</button>
-          </Link>
-        </>
+      {index > 0 ? (
+        <button
+          onClick={() => {
+            setIndex(currIndex => currIndex - 1);
+          }}
+        >
+          ❮
+        </button>
       ) : (
-        <Link href="/product" passHref>
-          <button>❮</button>
-        </Link>
+        <></>
+      )}
+      {index < 3 ? (
+        <button
+          onClick={() => {
+            setIndex(currIndex => currIndex + 1);
+          }}
+        >
+          ❯
+        </button>
+      ) : (
+        <></>
       )}
     </div>
   );

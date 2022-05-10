@@ -17,7 +17,7 @@ export default function NavBar() {
         </li>
 
         {email ? (<li>
-          <Link href="/customer" passHref>
+          <Link href="/create" passHref>
             <button className="btn-blue-text">Create</button>
           </Link>
         </li>) : <></>}
