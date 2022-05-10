@@ -62,7 +62,7 @@ function DisplayCustomers({ customers, setIndex }) {
         <CustomerForm
           customer={e}
           setIndex={setIndex}
-          key={e["customerName"]}
+          key={e["buyerReference"]}
         />
       ))}
     </div>
@@ -87,7 +87,7 @@ function CustomerForm({ customer, setIndex }) {
         onSelect();
       }}
     >
-      <h3 className="white">{customer["customerName"]}</h3>
+      <h3 className="white">{customer["buyerReference"]}</h3>
     </div>
   );
 }

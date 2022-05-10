@@ -1,10 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../lib/context";
 import jsCookie from "js-cookie";
 import FormInput from "../FormInput";
 
 export default function ProductForm({setIndex}){
-  const { token, setProduct } = useContext(UserContext);
+  const { token, product, setProduct } = useContext(UserContext);
+
+  useEffect(() => {
+
+    const values = document.getElementById("productForm");
+
+    if (product != null){
+      values.elements["formInvoiceId"].value = product['invoiceId'];
+    values.elements["formInvoiceQuantity"].value = product['invoiceQuantity'];
+    values.elements["formInvoiceLineExtension"].value = product['invoiceLineExtension'];
+    values.elements["formInvoiceName"].value = product['invoiceName'];
+    values.elements["formInvoicePriceAmount"].value = product['invoicePriceAmount'];
+    values.elements["formInvoiceBaseQuantity"].value = product['invoiceBaseQuantity'];
+    }
+
+  }, [product])
 
   const onSubmit = async () => {
     event.preventDefault();

@@ -1,17 +1,33 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../lib/context";
 import jsCookie from "js-cookie";
 import FormInput from "../FormInput";
 
 export default function CustomerForm({setIndex}) {
 
-  const {token, setCustomer} = useContext(UserContext);
+  const {token, customer, setCustomer} = useContext(UserContext);
+
+  
+
+  useEffect(() => {
+    const values = document.getElementById("customerForm");
+    if (customer != null){
+      values.elements["formBuyerReference"].value = customer['buyerReference'];
+      values.elements["formCustomerContactName"].value = customer['customerName'];
+      values.elements["formCustomerRegistration"].value = customer['businessName'];
+      values.elements["formCustomerEmail"].value = customer['email'];
+      values.elements["formCustomerStreet"].value = customer['streetAddress'];
+      values.elements["formCustomerAddStreet"].value = customer['additionalStreetAddress'];
+      values.elements["formCustomerCity"].value = customer['city'];
+      values.elements["formCustomerPost"].value = customer['postcode'];
+      country: values.elements["formCustomerCountry"].value = customer['country'];
+    }
+  }, [customer])
 
   const onSubmit = async () => {
+    const values = document.getElementById("customerForm");
 
     event.preventDefault();
-
-    const values = document.getElementById("customerForm");
 
     const newCustomer = {
       buyerReference: values.elements["formBuyerReference"].value,
