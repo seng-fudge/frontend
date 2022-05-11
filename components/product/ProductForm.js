@@ -1,10 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "../../lib/context";
 import jsCookie from "js-cookie";
 import FormInput from "../FormInput";
 
-export default function ProductForm({setIndex}){
-  const { token, setProduct } = useContext(UserContext);
+export default function ProductForm({ setIndex }) {
+  const { token, product, setProduct } = useContext(UserContext);
+
+  useEffect(() => {
+    const values = document.getElementById("productForm");
+
+    if (product != null) {
+      values.elements["formInvoiceId"].value = product["invoiceId"];
+      values.elements["formInvoiceQuantity"].value = product["invoiceQuantity"];
+      values.elements["formInvoiceLineExtension"].value =
+        product["invoiceLineExtension"];
+      values.elements["formInvoiceName"].value = product["invoiceName"];
+      values.elements["formInvoicePriceAmount"].value =
+        product["invoicePriceAmount"];
+      values.elements["formInvoiceBaseQuantity"].value =
+        product["invoiceBaseQuantity"];
+    }
+  }, [product]);
 
   const onSubmit = async () => {
     event.preventDefault();
@@ -46,7 +62,7 @@ export default function ProductForm({setIndex}){
 
         console.log(data);
 
-        setIndex(currIndex => currIndex + 1);
+        setIndex((currIndex) => currIndex + 1);
       } else {
         const data = await response.json();
 
@@ -57,34 +73,36 @@ export default function ProductForm({setIndex}){
     }
   };
 
-  return <form id="productForm" onSubmit={() => onSubmit()}>
-  <h1 className="gradient-text large-text reduce-margin">
-    Product Details
-  </h1>
-  <FormInput id="formInvoiceId" name="Invoice id" type="number" />
-  <FormInput
-    id="formInvoiceQuantity"
-    name="Product quantity"
-    type="number"
-  />
-  <FormInput
-    id="formInvoiceLineExtension"
-    name="Line extention"
-    type="number"
-  />
-  <FormInput id="formInvoiceName" name="Invoice name" type="text" />
-  <FormInput
-    id="formInvoicePriceAmount"
-    name="Product price"
-    type="number"
-  />
-  <FormInput
-    id="formInvoiceBaseQuantity"
-    name="Product base quantity"
-    type="number"
-  />
-  <button type="submit" className="btn-gradient">
-    Next
-  </button>
-</form>
+  return (
+    <form id="productForm" onSubmit={() => onSubmit()}>
+      <h1 className="gradient-text large-text reduce-margin">
+        Product Details
+      </h1>
+      <FormInput id="formInvoiceId" name="Invoice id" type="number" />
+      <FormInput
+        id="formInvoiceQuantity"
+        name="Product quantity"
+        type="number"
+      />
+      <FormInput
+        id="formInvoiceLineExtension"
+        name="Line extention"
+        type="number"
+      />
+      <FormInput id="formInvoiceName" name="Invoice name" type="text" />
+      <FormInput
+        id="formInvoicePriceAmount"
+        name="Product price"
+        type="number"
+      />
+      <FormInput
+        id="formInvoiceBaseQuantity"
+        name="Product base quantity"
+        type="number"
+      />
+      <button type="submit" className="btn-gradient">
+        Next
+      </button>
+    </form>
+  );
 }
