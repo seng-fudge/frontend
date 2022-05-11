@@ -102,6 +102,17 @@ a {
     margin: 0 5px;
     z-index: 1000;
   }
+
+.gradient {
+  background: conic-gradient(
+      from 154.3deg at 55.33% 50%,
+      #bbc0fe -163.1deg,
+      #4285f4 10.74deg,
+      rgba(172, 185, 253, 0.9) 103.13deg,
+      #bbc0fe 196.9deg,
+      #4285f4 370.74deg
+    );
+}
   
 .progbar button.active {
     background: conic-gradient(
@@ -357,6 +368,13 @@ button.extra-large {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+.fill {
+  flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%
 }
 
 /* Animation for detail screen */
