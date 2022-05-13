@@ -5,11 +5,11 @@ import Image from "next/image";
 export default function About() {
   return (
     <Parallax pages={3} style={{ top: "0", left: "0" }}>
-      <ParallaxLayer offset={0} speed={1} className="gradient" />
+      <ParallaxLayer offset={0} speed={2} className="gradient" />
 
       <ParallaxLayer
         offset={0}
-        speed={2.5}
+        speed={1}
         style={{
           display: "flex",
           alignItems: "center",
