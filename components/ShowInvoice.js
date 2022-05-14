@@ -4,7 +4,7 @@ import { UserContext } from "../lib/context";
 import LoginButton from "./LoginButton";
 import toast from "react-hot-toast";
 import Link from "next/link";
-import ProgBar from "./Progbar";
+import Loader from "./Loader";
 
 export default function ShowInvoice() {
   const { email, customer, payment, product } = useContext(UserContext);
@@ -25,10 +25,8 @@ export default function ShowInvoice() {
 }
 
 function DisplayInvoice() {
-  const loadingValue = `<html><main>Loading</main></html>`;
-  const [htmlValue, setHtmlValue] = useState(
-    loadingValue
-  );
+  const LOADVALUE = `loading`;
+  const [htmlValue, setHtmlValue] = useState(LOADVALUE);
 
   const { token, setXml, customer, payment, product } = useContext(UserContext);
 
@@ -248,16 +246,25 @@ function DisplayInvoice() {
         console.log(error);
       }
     }
-    setHtmlValue(loadingValue)
+    setHtmlValue(LOADVALUE);
     fetchData();
-  }, [token, customer, product, payment]);
+  }, [token, customer, product, payment, LOADVALUE, setXml]);
 
-  return (
-    <>
-      <iframe className={styles.showpage} srcDoc={htmlValue}></iframe>
-      <Link href="/sendInvoice" passHref>
-        <button className="btn-gradient ">Next</button>
-      </Link>
-    </>
-  );
+  if (htmlValue == LOADVALUE) {
+    return <div>
+      <h1 className="title">
+        Invoice preview
+      </h1>
+      <Loader/>
+    </div>;
+  } else {
+    return (
+      <>
+        <iframe className={styles.showpage} srcDoc={htmlValue}></iframe>
+        <Link href="/sendInvoice" passHref>
+          <button className="btn-gradient ">Next</button>
+        </Link>
+      </>
+    );
+  }
 }
