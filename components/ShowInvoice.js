@@ -10,15 +10,15 @@ export default function ShowInvoice() {
   const { email, customer, payment, product } = useContext(UserContext);
 
   return email ? (
-    <main>
+    <>
       {customer && payment && product ? (
         <DisplayInvoice />
       ) : (
-        <>
+        <main>
           <h1>You must create all parts of invoice first</h1>
-        </>
+        </main>
       )}
-    </main>
+    </>
   ) : (
     <LoginButton />
   );
@@ -251,12 +251,14 @@ function DisplayInvoice() {
   }, [token, customer, product, payment, LOADVALUE, setXml]);
 
   if (htmlValue == LOADVALUE) {
-    return <div>
-      <h1 className="title">
-        Invoice preview
-      </h1>
-      <Loader/>
-    </div>;
+    return (
+      <div>
+        <h1 className="title">Invoice preview</h1>
+        <div className="centered-flex">
+          <Loader />
+        </div>
+      </div>
+    );
   } else {
     return (
       <>
@@ -267,4 +269,6 @@ function DisplayInvoice() {
       </>
     );
   }
+
+  
 }
