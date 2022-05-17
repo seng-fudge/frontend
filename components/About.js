@@ -22,15 +22,24 @@ export default function About() {
         <h1 className="white-title">FUDGE Invoice Creation</h1>
       </ParallaxLayer>
 
-      <ParallaxLayer offset={0} sticky={{ start: 0, end: 3 }} style={{
+      <ParallaxLayer
+        offset={0}
+        sticky={{ start: 0, end: 3 }}
+        style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           marginLeft: "0%",
           marginRight: "50%",
           width: "50%",
-        }}>
-        <Image src="/logo.png" objectFit="scale-down" layout="fill" alt="Logo"/>
+        }}
+      >
+        <Image
+          src="/logo.png"
+          objectFit="scale-down"
+          layout="fill"
+          alt="Logo"
+        />
       </ParallaxLayer>
 
       <ParallaxLayer
@@ -47,19 +56,14 @@ export default function About() {
         }}
       >
         <p>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-          quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-          exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-          ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-          ea voluptate velit esse quam nihil molestiae consequatur, vel illum
-          qui dolorem eum fugiat quo voluptas nulla pariatur?
+          Fudge is an invoice creation platform which aims to streamline
+          invoicing and support businesses. We are a customer-centric team that
+          aims to help lower the costs of invoicing and lower the stress of
+          business owners and employees. As a new and rising company ourselves,
+          we understand and empathise with small businesses, and we sustain
+          close connections with our customers in order to bring a useful and
+          lovable product for e-invoicing. Fudge takes you through the process of 
+          creating your invoice with very easy steps to follow.
         </p>
       </ParallaxLayer>
       <ParallaxLayer
