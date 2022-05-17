@@ -12,25 +12,51 @@ export default function NavBar() {
       <ul>
         <li>
           <Link href="/" passHref>
-            <Image src="/logo.png" width={50} height={50} alt="Logo"/>
+            <Image src="/logo.png" width={50} height={50} alt="Logo" />
           </Link>
         </li>
 
-        {email ? (<li>
-          <Link href="/create" passHref>
-            <button className="btn-blue-text">Create</button>
-          </Link>
-        </li>) : <></>}
+        {email ? (
+          <li>
+            <Link href="/create" passHref>
+              <button className="btn-blue-text">Create</button>
+            </Link>
+          </li>
+        ) : (
+          <></>
+        )}
 
-        {email ? (<li>
-          <Link href="/invoiceHistory" passHref>
-            <button className="btn-blue-text">Invoice History</button>
-          </Link>
-        </li>) : <></>}
+        {email ? (
+          <li>
+            <Link href="/user" passHref>
+              <button className="btn-blue-text">User Details</button>
+            </Link>
+          </li>
+        ) : (
+          <></>
+        )}
 
-        {email ? (<li><LogoutButton/></li>) : (<li><Link href="/login" passHref>
-          <button className="btn-gradient">Login</button>
-        </Link></li>)}
+        {email ? (
+          <li>
+            <Link href="/invoiceHistory" passHref>
+              <button className="btn-blue-text">Invoice History</button>
+            </Link>
+          </li>
+        ) : (
+          <></>
+        )}
+
+        {email ? (
+          <li>
+            <LogoutButton />
+          </li>
+        ) : (
+          <li>
+            <Link href="/login" passHref>
+              <button className="btn-gradient">Login</button>
+            </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );
